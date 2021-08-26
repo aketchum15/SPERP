@@ -1,0 +1,173 @@
+array <string> primes [12][4] = {{"The thief", "identified", "by the victim", "was questioned"},
+                              {"The client", "examined", "by the lawyer", "was reliable"},
+										{"The professor", "paid", "the college", "that was accepting donations"},
+										{"The customer", "selected", "the guard", "that was watching their bags"},
+										{"The manager", "proposed", "the changes", "that were strict"},
+                              {"The athlete", "studied", "the author", "who was writing a book"}, 
+                              {"The actress", "loved", "by the fans", "was at the premiere"},
+										{"The surgeon", "requested", "the nurse", "who was talented"},
+										{"The trainer", "wanted", "by the athelete", "was busy"},
+                              {"The thief", "watched", "by the cop", "was in town"},
+										{"The candidate", "considered", "the company", "that had good opportunities"},
+                              {"The assistant", "graded", "by the professor", "was interesting"}};
+
+array <string> targets [12][4] = {{"The boy", "identified", "by the policeman", "had blue eyes"},
+										{"The horse", "examined", "by the vet", "was healthy"},
+										{"The worker", "paid", "by the company", "was educated"},
+                              {"The contestant", "selected", "by the batchelor", "was the best choice"},
+                              {"The speaker", "proposed", "by the group", "was engaging"},
+                              {"The soldier", "studied",	"by the journalist", "fought bravely"},
+                              {"The dog", "loved", "by the child", "was well behaved"},
+                              {"The doctor", "requested", "by the hospital", "had arrived"},
+                              {"The singer", "wanted", "by the company", "had a nice voice"},
+                              {"The woman", "watched", "by the artist", "was wearing a mask"},
+                              {"The scientist", "considered", "by the committee", "was qualified"},
+                              {"The contestant", "graded", "by the panel", "was trying to win"}};
+
+#EXPERIMENTAL IS NOT TO BE RANDOMIZED
+
+array <string> experimental_prompts [12] = {"Did the policeman identify the boy?",
+                                        "Did the horse examine the vet?",
+                                        "Did the company pay the worker?",
+                                        "Did the contestant select the bachelor",
+                                        "Did the speaker propose the group",
+                                        "Did the soldier study the journalist",
+                                        "Did the child love the dog",
+                                        "Did the hospital request the doctor",
+                                        "Did the company want the singer",
+                                        "Did the woman watch the artist",
+                                        "Did the committee consider the scientist",
+                                        "Did the contestnat grade the panel"};
+
+array<int> experimental_responses [12] = {1, 2, 1, 2, 2, 2, 1, 1, 1, 2, 1, 2};
+
+array <string> baselines [12][3] = {{"The puppy", "was barking", "in the garden"},
+                                        {"The hiker", "was camping", "on the mountain"},
+                                        {"The intern", "was coughing", "in the office"},
+                                        {"The bosses", "were retiring", "from the company"},
+                                        {"The winners", "were running", "on the track"},
+                                        {"The nannies", "were shivering", "in the park"},
+                                        {"The deacons", "was kneeling", "at the church"},
+                                        {"The dancers", "was laughing", "at the tryout"},
+                                        {"The campers", "was leaping", "into the pool"},
+                                        {"The stranger", "were resting", "on the bench"},
+                                        {"The lifeguard", "were swimming", "in the ocean"},
+                                        {"The daughter", "were talking", "on the terrace"}};
+
+array <string> baseline_prompts [12] = {"Did the puppy bark in the garden?", "", "", "Did the bosses retire from the school?", "Did the winners run on the street?", "", "", "", "", "", "", ""};
+array <int> baseline_responses [12] = {0, 1, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0};
+
+array <string> fillers [6][4] = {{"The woman", "bought", "the apple", "that was red"},
+                                 {"The boy", "met", "the athlete", "who was tall"},
+                                 {"The man", "called", "the neighbors", "who were noisy"},
+                                 {"The girl", "found", "the watch", "that was lost"},
+                                 {"The man", "saw", "the actress", "who was pretty"},
+                                 {"The girl", "ate the cake", "that was sweet"}};
+
+array <string> filler_prompts [6] = {"", "Was the athlete tall?", "Were the neighbors noisy?", "", "", "Was the actress ugly?"};
+array <int> filler_responses [6] = {0, 1, 1, 0, 0, 2};
+
+array <int> baseline_indicies [12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+
+array <int> filler_indicies [12] = {0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6};
+
+########################################################################################################################################################################
+
+sub string type_to_string(int aType) begin
+	if aType == stimulus_hit then
+		return "HIT";
+	elseif aType == stimulus_incorrect then
+		return "INCORRECT";
+	else
+		return "MISS";
+	end;
+return "";
+end;
+
+###################################################################################################################################################################
+
+loop int i = 1 until i > primes.count() begin
+	
+	#primes
+	P_alert.present();
+	fixation.present();
+	loop int j =1 until j > primes[i].count() begin
+		prime_text.set_caption(primes[i][j]);
+		prime_text.redraw();
+		prime.present();
+		sleep.present();
+		j = j + 1;
+	end;
+	
+	#targets
+	T_alert.present();
+	fixation.present();
+	loop int j = 1 until j > targets[i].count() begin
+		target_text.set_caption(targets[i][j]);
+		target_text.redraw();
+		target.present();
+		sleep.present();
+		j = j + 1;
+	end;
+	
+	#experimental prompts
+	prompt_sleep.present();
+	experimental_prompt.set_caption(experimental_prompts[i]);
+	experimental_prompt.redraw();
+	experimental_probe.get_stimulus_event(1).set_target_button(experimental_responses[i]);
+	experimental_probe.present();
+	
+	term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+	term.print_line(stimulus_manager.last_stimulus_data().reaction_time_double());
+	
+	#baselines
+	B_alert.present();
+	baseline_indicies.shuffle();
+	fixation.present();
+	loop int j = 1 until j > baselines[i].count() begin
+		baseline_text.set_caption(baselines[baseline_indicies[i]][j]);
+		baseline_text.redraw();
+		baseline.present();
+		sleep.present();
+		j = j + 1;
+	end;
+	
+	#baseline prompts
+	prompt_sleep.present();
+	if (baseline_prompts[baseline_indicies[i]] != "") then
+		baseline_prompt.set_caption(baseline_prompts[baseline_indicies[i]]);
+		baseline_prompt.redraw();
+		baseline_probe.get_stimulus_event(1).set_target_button(baseline_responses[baseline_indicies[i]]);
+		baseline_probe.present();
+		term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+
+	end;
+	
+	#fillers
+	F_alert.present();
+	filler_indicies.shuffle();
+	fixation.present();
+	if (filler_indicies[i] != 0) then
+		loop int j = 1 until j > fillers[filler_indicies[i]].count() begin 
+			filler_text.set_caption(fillers[filler_indicies[i]][j]);
+			filler_text.redraw();
+			filler.present();
+			sleep.present();
+			
+			j = j + 1;
+		end; 
+		
+		#filler prompts
+		prompt_sleep.present();
+		if (filler_prompts[filler_indicies[i]] != "") then
+			filler_prompt.set_caption(filler_prompts[filler_indicies[i]]);
+			filler_prompt.redraw();
+			filler_probe.get_stimulus_event(1).set_target_button(filler_responses[filler_indicies[i]]);
+			filler_probe.present();
+			term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+		end;
+	end;
+	
+	i = i + 1; 
+end;
+
