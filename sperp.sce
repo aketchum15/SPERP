@@ -1,3 +1,12 @@
+#
+# gray background /
+# font size vars /
+# yes no on prompt screen after var time /
+# choice between bgray and white bg /
+# break screen between blocks /
+# fixation cross sometimes flashes ???
+
+
 ################################## HEADER ################################## - never modify these
 scenario = "sperp";
 active_buttons = 3;
@@ -17,12 +26,18 @@ ENDIF;
 ############################## VARIABLES ##################################
 ###########################################################################
 
-#white background black text, bigger font
+$stim_font_size = 96;
+$probe_font_size = 60;
 
-$prime_duration = 600;
-$target_duration = 600;
-$baseline_duration = 600;
-$filler_duration = 600;
+#background color 0-255, 255 for white, 0 for black
+$bg_color = 150;
+#font color 0-255
+$font_color = 0;
+
+$prime_duration = 1000;
+$target_duration = 1000;
+$baseline_duration = 1000;
+$filler_duration = 1000;
 
 $baseline_probe_duration = 1000;
 $filler_probe_duration = 1000;
@@ -33,62 +48,94 @@ $prompt_sleep_duration = 800;
 
 $fixation_duration = 1000;
 
+$yes_no_time = 500;
+
 
 begin;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $stim_font_size;
 } prime_text;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $stim_font_size;
 } target_text;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $stim_font_size;
 } baseline_text;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $stim_font_size;
 } filler_text;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $probe_font_size;
 } experimental_prompt;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $probe_font_size;
 } baseline_prompt;
 
 text {
 	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $probe_font_size;
 } filler_prompt;
+
+text {
+	width = 500;
+	height = 100;
+	caption = "yes                  no";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $probe_font_size;
+} yes_no_text;
 
 trial { 
 
 	trial_duration = $prime_duration;
-	picture { text prime_text; x=0; y=0; };
+	picture { background_color = $bg_color, $bg_color, $bg_color; text prime_text; x=0; y=0; };
 	
 } prime;
 
 trial {
 
 	trial_duration = $target_duration;
-	picture { text target_text; x=0; y=0; };
+	picture { background_color = $bg_color, $bg_color, $bg_color; text target_text; x=0; y=0; };
 	
 } target;
 
 trial {
 
 	trial_duration = $baseline_duration;
-	picture { text baseline_text; x=0; y=0; };
+	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_text; x=0; y=0; };
 	
 } baseline;
 
 trial {
 
 	trial_duration = $filler_duration;
-	picture { text filler_text; x=0; y=0; };
+	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_text; x=0; y=0; };
 	
 } filler;
 
@@ -96,77 +143,80 @@ trial {
 	
 	trial_type = first_response;
 	trial_duration = forever;
-	picture { text experimental_prompt; x=0; y=0; };
-
+	picture { background_color = $bg_color, $bg_color, $bg_color; text experimental_prompt; x=0; y=0; };
+	time = 0;
+	
+	picture { background_color = $bg_color, $bg_color, $bg_color; text experimental_prompt; x=0; y=0; text yes_no_text; x=0; y=-250; };
+	delta_time = $yes_no_time;
+	
 } experimental_probe;
 
 trial {
 
 	trial_type = first_response; 
 	trial_duration = forever;
-	picture { text baseline_prompt; x=0; y=0; };
 	
+	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_prompt; x=0; y=0; };
+	time = 0;
+	
+	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_prompt; x=0; y=0; text yes_no_text; x=0; y=-250; };
+	delta_time = $yes_no_time;
+
 } baseline_probe;
 
 trial {
 
-	trial_duration = $filler_probe_duration;
-	picture { text filler_prompt; x=0; y=0; };
+	trial_type = first_response;
+	trial_duration = forever;
+	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_prompt; x=0; y=0; };
+	time = 0;
 	
+	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_prompt; x=0; y=0; text yes_no_text; x=0; y=-250; };
+	delta_time = $yes_no_time;
+
 } filler_probe;
 
 trial { 
 
 	trial_duration = $sleep_duration;
-	picture { text { caption="";}; x=0; y=0; };
+	picture { background_color = $bg_color, $bg_color, $bg_color; text { caption="";}; x=0; y=0; };
 	
 } sleep;
 
 trial {
 
 	trial_duration = $prompt_sleep_duration;
-	picture { text { caption="";}; x=0; y=0; };
-	
+	picture { background_color = $bg_color, $bg_color, $bg_color; text { caption="";}; x=0; y=0; };
+		
 } prompt_sleep;
 
 trial {
 	
 	trial_duration = $fixation_duration;
-	picture { line_graphic { 
+	picture { background_color = $bg_color, $bg_color, $bg_color; line_graphic { 
 		coordinates = -300, 0, 300, 0;
 		coordinates = 0, -300, 0, 300;
 		line_width = 5;
+		line_color = $font_color, $font_color, $font_color;
 	}; x=0; y=0; };
 	
 } fixation;
 
-
-
 trial {
-
-	trial_duration = 500;
-	
-	picture { text { caption = "FILLER";}; x=0; y=0; };
-} F_alert;
-	
-trial {
-
-	trial_duration = 500;
-	
-	picture { text { caption = "BASELINE";}; x=0; y=0; };
-} B_alert;
-
-trial {
-
-	trial_duration = 500;
-	
-	picture { text { caption = "PRIME";}; x=0; y=0; };
-} P_alert;
-
-
-trial {
-
-	trial_duration = 500;
-	
-	picture { text { caption = "TARGET";}; x=0; y=0; };
-} T_alert;
+	trial_duration = forever;
+	trial_type = specific_response;
+	terminator_button = 3;
+	picture {
+		background_color = $bg_color, $bg_color, $bg_color;
+		text 
+		{
+			font_color = $font_color, $font_color, $font_color;
+			background_color = $bg_color, $bg_color, $bg_color;
+			caption = "Break";
+			font = "Times New Roman";
+			font_size = $stim_font_size;
+		};
+		x = 0;
+		y = 0;
+	};
+} break_trial;
