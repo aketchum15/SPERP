@@ -48,6 +48,8 @@ $prompt_sleep_duration = 800;
 
 $fixation_duration = 1000;
 
+$response_duration = 1000;
+
 $yes_no_time = 500;
 
 
@@ -103,9 +105,16 @@ text {
 } filler_prompt;
 
 text {
+	caption = "";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $stim_font_size;
+} response_text;
+
+text {
 	width = 500;
 	height = 100;
-	caption = "yes                  no";
+	caption = "yes               no";
 	font_color = $font_color, $font_color, $font_color;
 	background_color = $bg_color, $bg_color, $bg_color;
 	font_size = $probe_font_size;
@@ -176,6 +185,13 @@ trial {
 
 } filler_probe;
 
+trial {
+
+	trial_duration = $response_duration;
+	picture { background_color = $bg_color, $bg_color, $bg_color; text response_text; x=0; y=0; };
+	
+} response_trial;
+
 trial { 
 
 	trial_duration = $sleep_duration;
@@ -212,7 +228,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Break";
+			caption = "Great Job! Let's take a break.";
 			font = "Times New Roman";
 			font_size = $stim_font_size;
 		};
@@ -220,3 +236,80 @@ trial {
 		y = 0;
 	};
 } break_trial;
+
+trial {
+	trial_duration = forever;
+	trial_type = specific_response;
+	terminator_button = 3;
+	picture {
+		background_color = $bg_color, $bg_color, $bg_color;
+		text 
+		{
+			font_color = $font_color, $font_color, $font_color;
+			background_color = $bg_color, $bg_color, $bg_color;
+			caption = "You're done! Thank you for participating.";
+			font = "Times New Roman";
+			font_size = $stim_font_size;
+		};
+		x = 0;
+		y = 0;
+	};
+} done_trial;
+
+trial {
+	trial_duration = forever;
+	trial_type = specific_response;
+	terminator_button = 3;
+	picture {
+		background_color = $bg_color, $bg_color, $bg_color;
+		text 
+		{
+			font_color = $font_color, $font_color, $font_color;
+			background_color = $bg_color, $bg_color, $bg_color;
+			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one.\n\nYou will also answer questions about some of the sentences. The questions can be answered with “YES” or “NO”.\n\nPress the LEFT button for “YES”\nPress the RIGHT button for “NO”";
+			font = "Times New Roman";
+			font_size = 30;
+		};
+		x = 0;
+		y = 0;
+	};
+} instr1;
+
+trial {
+	trial_duration = forever;
+	trial_type = specific_response;
+	terminator_button = 3;
+	picture {
+		background_color = $bg_color, $bg_color, $bg_color;
+		text 
+		{
+			font_color = $font_color, $font_color, $font_color;
+			background_color = $bg_color, $bg_color, $bg_color;
+			caption = "Let’s do some practice!\n\nRemember to read each sentence chunk carefully,\nand answer the questions by pressing the LEFT button for “YES” and the RIGHT button for “NO”.";
+			font = "Times New Roman";
+			font_size = 30;
+		};
+		x = 0;
+		y = 0;
+	};
+} instr2;
+
+trial {
+	trial_duration = forever;
+	trial_type = specific_response;
+	terminator_button = 3;
+	picture {
+		background_color = $bg_color, $bg_color, $bg_color;
+		text 
+		{
+			font_color = $font_color, $font_color, $font_color;
+			background_color = $bg_color, $bg_color, $bg_color;
+			caption = "Great Job! Let’s begin the task.\n\nRemember to read each sentence chunk carefully,\nand answer the questions by pressing the LEFT button for “YES” and the RIGHT button for “NO”.\n\nPlease let the experimenter know if you have any questions.
+";
+			font = "Times New Roman";
+			font_size = 30;
+		};
+		x = 0;
+		y = 0;
+	};
+} instr3;

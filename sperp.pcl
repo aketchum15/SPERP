@@ -1,11 +1,32 @@
+array <string> practice_experimental[2][2][4] = {{{"The child", "lifted", "by the mother", "was happy"},
+												{"The bride", "lifted", "by the groom", "was beautiful"}},
+												
+												{{"The professor", "read", "the book", "that was long"},
+												{"The poem", "read", "by the students", "was famous"}}};
+
+array <string> practice_baseline[2][4] = {{"The camper", "was leaping", "into the pool"},
+														{"The grandma", "were walking", "on the path"}};
+
+array <string> practice_filler[2][4] = {{"The vet", "weighed", "the cat", "that was heavy"},
+													{"The policeman", "patted", "the dog", "that was loyal"}};
+
+array <string> practice_e_probes[2] = {"Did the bride lift the groom?", "Did the student read the poem?"};
+array <int> practice_e_responses[2] = {2, 1};
+
+string practice_b_probe = "Did the camper leap into the pool?";
+int practice_b_response = 1;
+
+string practice_f_probe = "Did the policeman pat the cat?";
+int practice_f_response = 2;
+
 array <string> primes_1[6][12][4] = {{{"The manager", "proposed", "the boss", "that was friendly"},
                                     {"The teacher", "recognized", "by the student", "was tall"},
                                     {"The child", "scratched", "by the dog", "was annoyed"},
                                     {"The customer", "selected", "the guard", "that was strong"},
                                     {"The dancer", "recorded", "by the professor", "was graceful"},
                                     {"The trainer", "wanted", "by the athlete", "was busy"},
-                                    {"The student", "discussed", "the grade   that", "was unfair"},
-                                    {"The woman", "watched", "the crowd   that", "was large"},
+                                    {"The student", "discussed", "the grade", "that was unfair"},
+                                    {"The woman", "watched", "the crowd", "that was large"},
                                     {"The teacher", "loved", "by the class", "was cheerful"},
                                     {"The candidate", "considered", "the company that", "was trustworthy"},
                                     {"The prisoner", "transported", "by the guards", "was dangerous"},
@@ -16,25 +37,25 @@ array <string> primes_1[6][12][4] = {{{"The manager", "proposed", "the boss", "t
                                     {"The client", "examined", "by the lawyer", "was guilty"},
                                     {"The child", "chased", "the chicken that", "was escaping"},
                                     {"The customer", "sketched", "by the waitress", "was king"},
-                                    {"The soldier", "studied", "the journalist  who", "was writing an article"},
-                                    {"The star", "recognized", "the fans    who", "were supportive"},
+                                    {"The soldier", "studied", "the journalist", "who was writing an article"},
+                                    {"The star", "recognized", "the fans", "who were supportive"},
                                     {"The man", "scratched", "by the cat", "was badly injured"},
                                     {"The client", "wanted", "by the detective", "was rich"},
                                     {"The assistant", "described", "by the visitor", "had green eyes"},
-                                    {"The assistant", "recorded", "the actor   that", "was arrogant"},
-                                    {"The star", "identified", "the policeman   who", "had black hair"}},
+                                    {"The assistant", "recorded", "the actor", "that was arrogant"},
+                                    {"The star", "identified", "the policeman", "who had black hair"}},
                                     
                                     {{"The customer", "selected", "by the guard", "was suspicious"},
                                     {"The athlete", "studied", "the trainer", "who was fit"},
                                     {"The star", "identified", "by the policeman", "had blue eyes"},
-                                    {"The referee", "sent", "the report  that", "was imprtant"},
+                                    {"The referee", "sent", "the report", "that was important"},
                                     {"The scientist", "considered", "by the committee", "was qualified"},
-                                    {"The tutor", "requested", "the child   that", "was well-behaved"},
+                                    {"The tutor", "requested", "the child", "that was well-behaved"},
                                     {"The criminal", "recognized", "the officer who", "was strong"},
                                     {"The tourist", "chased", "by the lion", "was scared"},
                                     {"The patient", "expected", "the surgeon who", "was an expert"},
                                     {"The thief", "watched", "by the cop", "was sneaky"},
-                                    {"The pilot", "attacked", "the mob     that", "was angry"},
+                                    {"The pilot", "attacked", "the mob", "that was angry"},
                                     {"The client", "discussed", "by the company", "was convincing"}},
                                     
                                     {{"The candidate", "accepted", "the party", "that was supportive"},
@@ -138,7 +159,7 @@ array <string> primes_2[6][12][4] = {{{"The director", "described", "by the actr
                                     {"The child", "identified", "the teacher", "that was helpful"},
                                     {"The director", "accepted", "the award", "that was important"},
                                     {"The father", "sketched", "by the daughter", "was tall"},
-                                    {"The criminal ", "recognized", "by the officer", "was dangerous"},
+                                    {"The criminal", "recognized", "by the officer", "was dangerous"},
                                     {"The worker", "examined", "by the boss", "was wasteful"},
                                     {"The singer", "recorded", "by the reporters", "was in a scandal"}},
                                     
@@ -151,7 +172,7 @@ array <string> primes_2[6][12][4] = {{{"The director", "described", "by the actr
                                     {"The assitant", "recorded", "by the actor", "was nosy"},
                                     {"The man", "paid", "the roommate", "who was nice"},
                                     {"The lifeguard", "watched", "by the swimmer", "had a suntan"},
-                                    {"The client", "wanted", "the dective", "who was smart"},
+                                    {"The client", "wanted", "the detective", "who was smart"},
                                     {"The mother", "attacked", "the thief", "that was mean"},
                                     {"The speaker", "proposed", "the solution", "that was doable"}}};
 
@@ -499,7 +520,7 @@ array <string> baselines [36][3] = {{"The puppy", "was barking", "in the garden"
                                     {"The fathers", "shouting", "at the game"},
                                     {"The actors", "were singing", "in the theater"},
                                     {"The players", "sitting", "on the pavement"},
-                                    {"The victors", "sktating", "in the arena"},
+                                    {"The victors", "skating", "in the arena"},
                                     {"The families", "were skiing", "at the resort"},
                                     {"The painters", "were sleeping", "on the porch"},
                                     {"The waiters", "smiling", "in the kitchen"},
@@ -520,7 +541,7 @@ array <string> baseline_prompts [36] = {"Did the puppy bark in the garden?",
                                         "Did the swimmer dive in the ocean?",
                                         "Did the brother fence in the tournament?",
                                         "Did the lawyer frown in the courthouse?",
-                                        "Did the colleage gesture in the classroom?",
+                                        "Did the colleague gesture in the classroom?",
                                         "Did the felon grimace in the prison?",
                                         "Did the sister grin at the wedding?",
                                         "Did the werewolf howl in the house?",
@@ -536,14 +557,14 @@ array <string> baseline_prompts [36] = {"Did the puppy bark in the garden?",
                                         "Did the fathers shout at the game?",
                                         "Did the actors sing in the theater?",
                                         "Did the players sit on the bench?",
-                                        "Did the citors skate in the area?",
-                                        "Did the familes ski at the mountain?",
+                                        "Did the victors skate in the area?",
+                                        "Did the families ski at the mountain?",
                                         "Did the painters sleep in the studio?",
                                         "Did the waiters smile in the restaurant?",
                                         "Did the workers sneeze in the office?",
-                                        "Did the neighbors snor in the house?",
+                                        "Did the neighbors snore in the house?",
                                         "Did the doctors speak in the hallway?",
-                                        "Did the husbandsd stand on the lawn?",
+                                        "Did the husbands stand on the lawn?",
                                         "Did the lifeguards swim in the ocean?",
                                         "Did the daughters talk at the sleepover?"};
 
@@ -635,7 +656,7 @@ array <int> block_indicies [6] = {1, 2, 3, 4, 5, 6};
 
 sub string type_to_string(int aType) begin
 	if aType == stimulus_hit then
-		return "HIT";
+		return "CORRECT";
 	elseif aType == stimulus_incorrect then
 		return "INCORRECT";
 	else
@@ -644,9 +665,105 @@ sub string type_to_string(int aType) begin
 return "";
 end;
 
+sub practice begin
+	loop int i = 1 until i > 2 begin
+
+		fixation.present();
+		loop int j = 1 until j > practice_experimental[i][1].count() begin
+			prime_text.set_caption(practice_experimental[i][1][j]);
+			prime_text.redraw();
+			prime.present();
+			sleep.present();
+			
+			j = j + 1;
+		end;
+	
+		fixation.present();
+		loop int j = 1 until j > practice_experimental[i][2].count() begin
+			target_text.set_caption(practice_experimental[i][2][j]);
+			target_text.redraw();
+			target.present();
+			sleep.present();
+			
+			j = j + 1;
+		end;
+	
+		prompt_sleep.present();
+		experimental_prompt.set_caption(practice_e_probes[i]);
+		experimental_prompt.redraw();
+		experimental_probe.get_stimulus_event(1).set_target_button(practice_e_responses[i]);
+		experimental_probe.present();
+		sleep.present();
+		
+		#show if correct
+		response_text.set_caption(type_to_string(stimulus_manager.last_stimulus_data().type()));
+		response_text.redraw();
+		response_trial.present();
+		sleep.present();
+		
+		fixation.present();
+		loop int j = 1 until j > practice_baseline[i].count() begin
+			baseline_text.set_caption(practice_baseline[i][j]);
+			baseline_text.redraw();
+			baseline.present();
+			sleep.present();
+			
+			j = j + 1;
+		end;
+		
+		prompt_sleep.present(); 
+		if (i == 1) then
+			baseline_prompt.set_caption(practice_b_probe);
+			baseline_prompt.redraw();
+			baseline_probe.get_stimulus_event(1).set_target_button(practice_b_response);
+			baseline_probe.present();
+
+			#show if correct; 
+			response_text.set_caption(type_to_string(stimulus_manager.last_stimulus_data().type()));
+			response_text.redraw();
+			response_trial.present();
+			sleep.present();
+			
+			
+		end;
+		
+		fixation.present(); 
+		loop int j = 1 until j > practice_filler[i].count() begin
+			filler_text.set_caption(practice_filler[i][j]);
+			filler_text.redraw();
+			filler.present();
+			sleep.present();
+			
+			j = j + 1;
+		end;
+		
+		prompt_sleep.present();
+		if (i == 2) then
+			filler_prompt.set_caption(practice_f_probe);
+			filler_prompt.redraw();
+			filler_probe.get_stimulus_event(1).set_target_button(practice_f_response);
+			filler_probe.present();
+			
+			#show if correct
+			response_text.set_caption(type_to_string(stimulus_manager.last_stimulus_data().type()));
+			response_text.redraw();
+			response_trial.present();
+			sleep.present();
+		end;
+		
+		i = i + 1;
+	end;
+end;
+			
 ###################################################################################################################################################################
 
 block_indicies.shuffle();
+instr1.present();
+instr2.present();
+
+practice();
+
+instr3.present();
 
 loop int k = 1 until k > block_indicies.count() begin
 
@@ -733,3 +850,4 @@ loop int k = 1 until k > block_indicies.count() begin
 	
 	k = k + 1; 
 end;
+done_trial.present();
