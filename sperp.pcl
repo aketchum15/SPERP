@@ -30,7 +30,7 @@ array <string> primes_1[6][12][4] = {{{"The manager", "proposed", "the boss", "t
                                     {"The teacher", "loved", "by the class", "was cheerful"},
                                     {"The candidate", "considered", "the company that", "was trustworthy"},
                                     {"The prisoner", "transported", "by the guards", "was dangerous"},
-                                    {"The trainer", "requested", "the dancer  who", "was short"}},
+                                    {"The trainer", "requested", "the dancer", "who was short"}},
                                     
                                     {{"The pilot", "attacked", "by the mob", "was scared"},
                                     {"The worker", "paid", "the fee", "that was expensive"},
@@ -72,10 +72,10 @@ array <string> primes_1[6][12][4] = {{{"The manager", "proposed", "the boss", "t
                                     {"The nurse", "requested", "by the hospital", "was busy"}},
                                     
                                     {{"The child", "scratched", "the dog", "that was fluffy"},
-                                    {"The speaker", "proposed", "by the group", "was engagin"},
+                                    {"The speaker", "proposed", "by the group", "was engaging"},
                                     {"The man", "paid", "by the roommate", "was stingy"},
                                     {"The manager", "sketched", "the painter", "who had a mole"},
-                                    {"The nurse", "sent", "the doctor  who", "was on call"},
+                                    {"The nurse", "sent", "the doctor", "who was on call"},
                                     {"The mailman", "transported", "the box", "that was heavy"},
                                     {"The woman", "towed", "by the landlord", "was annoyed"},
                                     {"The patient", "expected", "by the surgeon", "was sick"},
@@ -193,7 +193,7 @@ array <string> targets_1 [6][12][4] = {{{"The speaker", "proposed", "by the grou
                                     {{"The mother", "attacked", "by the thief", "was scratched"},
                                     {"The man", "paid", "by the roommate", "was stingy"},
                                     {"The worker", "examined", "by the boss", "was wasteful"},
-                                    {"The turist", "chased", "by the lion", "was scared"},
+                                    {"The tourist", "chased", "by the lion", "was scared"},
                                     {"The father", "sketched", "by the daughter", "was tall"},
                                     {"The artist", "studied", "by the researcher", "was unknown"},
                                     {"The criminal", "recognized", "by the officer", "was dangerous"},
@@ -500,33 +500,33 @@ array <string> baselines [36][3] = {{"The puppy", "was barking", "in the garden"
                                     {"The baby", "was crawling", "on the floor"},
                                     {"The cousin", "was crying", "at the funeral"},
                                     {"The lady", "was dancing", "in the studio"},
-                                    {"The trainee", "dreaming", "in the shop"},
-                                    {"The swimmer", "diving", "in the pool"},
-                                    {"The brother", "fencing", "in the tournament"},
+                                    {"The trainee", "was dreaming", "in the shop"},
+                                    {"The swimmer", "was diving", "in the pool"},
+                                    {"The brother", "was fencing", "in the tournament"},
                                     {"The lawyer", "was frowning", "in the courthouse"},
                                     {"The colleague", "was gesturing", "in the meeting"},
                                     {"The felon", "was grimacing", "in the prison"},
                                     {"The sister", "was grinning", "at the party"},
                                     {"The werewolf", "was howling", "in the forest"},
-                                    {"The grandpa", "jogging", "at the lake"},
-                                    {"The toddler", "jumping", "at the park"},
+                                    {"The grandpa", "was jogging", "at the lake"},
+                                    {"The toddler", "was jumping", "at the park"},
                                     {"The deacon", "was kneeling", "at the church"},
                                     {"The dancer", "was laughing", "at the tryout"},
                                     {"The strangers", "were resting", "on the bench"},
                                     {"The bosses", "were retiring", "from the company"},
-                                    {"The winners", "running", "on the track"},
-                                    {"The nannies", "shivering", "in the park"},
-                                    {"The mothers", "showering", "in the bathroom"},
-                                    {"The fathers", "shouting", "at the game"},
+                                    {"The winners", "were running", "on the track"},
+                                    {"The nannies", "were shivering", "in the park"},
+                                    {"The mothers", "were showering", "in the bathroom"},
+                                    {"The fathers", "were shouting", "at the game"},
                                     {"The actors", "were singing", "in the theater"},
-                                    {"The players", "sitting", "on the pavement"},
-                                    {"The victors", "skating", "in the arena"},
+                                    {"The players", "were sitting", "on the pavement"},
+                                    {"The victors", "were skating", "in the arena"},
                                     {"The families", "were skiing", "at the resort"},
                                     {"The painters", "were sleeping", "on the porch"},
-                                    {"The waiters", "smiling", "in the kitchen"},
-                                    {"The workers", "sneezing", "in the office"},
+                                    {"The waiters", "were smiling", "in the kitchen"},
+                                    {"The workers", "were sneezing", "in the office"},
                                     {"The neighbors", "were snoring", "in the hotel"},
-                                    {"The doctors", "speaking", "in the hallway"},
+                                    {"The doctors", "were speaking", "in the hallway"},
                                     {"The husbands", "were standing", "in the courtyard"},
                                     {"The lifeguards", "were swimming", "in the ocean"},
                                     {"The daughters", "were talking", "on the terrace"}};
@@ -605,7 +605,7 @@ array <string> fillers [36][4] = {{"The woman", "bought", "the apple", "that was
                                     {"The girl", "kissed", "the dog", "that was cute"},
                                     {"The woman", "lost", "the wallet", "that was leather"},
                                     {"The woman", "helped", "the patient", "who was sick"},
-                                    {"The boy", "chewed", "the gun", "that was sticky"},
+                                    {"The boy", "chewed", "the gum", "that was sticky"},
                                     {"The girl", "cleaned", "the bathroom", "that was dirty"},
                                     {"The man", "cooked", "the pasta", "that was tasty"}};
 
@@ -614,7 +614,7 @@ array <string> filler_prompts [36] = {"Did the woman buy the apple?",
                                         "Did the neighbors call the man?",
                                         "Did the girl find the watch?",
                                         "Did the actress see the man?",
-                                        "Did the girl find the purse?",
+                                        "Did the girl eat the orange?",
                                         "Did the boy drink the water?",
                                         "Did the woman like the cake?",
                                         "Did the boy fail the test?",
@@ -758,10 +758,13 @@ end;
 ###################################################################################################################################################################
 
 block_indicies.shuffle();
+filler_indicies.shuffle();
 instr1.present();
 instr2.present();
 
 practice();
+
+string sentence = "";
 
 instr3.present();
 
@@ -773,12 +776,19 @@ loop int k = 1 until k > block_indicies.count() begin
 		fixation.present();
 		loop int j = 1 until j > primes_1[block_indicies[k]][i].count() begin
 			prime_text.set_caption(primes_1[block_indicies[k]][i][j]);
+			sentence.append(primes_1[block_indicies[k]][i][j]);
+			sentence.append(" ");
 			prime_text.redraw();
 			prime.present();
 			sleep.present();
 			j = j + 1;
 		end;
-	
+		
+		debug_text.set_caption(sentence);
+		debug_text.redraw();
+		debug.present();
+		sentence = "";
+			
 		#targets
 		fixation.present();
 		loop int j = 1 until j > targets_1[block_indicies[k]][i].count() begin
@@ -800,7 +810,6 @@ loop int k = 1 until k > block_indicies.count() begin
 		term.print_line(stimulus_manager.last_stimulus_data().reaction_time_double());
 	
 		#baselines
-		baseline_indicies.shuffle();
 		fixation.present();
 		loop int j = 1 until j > baselines[i].count() begin
 			baseline_text.set_caption(baselines[baseline_indicies[i]][j]);
@@ -822,7 +831,6 @@ loop int k = 1 until k > block_indicies.count() begin
 		end;
 	
 		#fillers
-		filler_indicies.shuffle();
 		fixation.present();
 		loop int j = 1 until j > fillers[filler_indicies[i]].count() begin 
 			filler_text.set_caption(fillers[filler_indicies[i]][j]);

@@ -1,9 +1,4 @@
-#
-# gray background /
-# font size vars /
-# yes no on prompt screen after var time /
-# choice between bgray and white bg /
-# break screen between blocks /
+
 # fixation cross sometimes flashes ???
 
 
@@ -27,7 +22,8 @@ ENDIF;
 ###########################################################################
 
 $stim_font_size = 96;
-$probe_font_size = 60;
+$probe_font_size = 80;
+$instruction_font_size = 40;
 
 #background color 0-255, 255 for white, 0 for black
 $bg_color = 150;
@@ -50,7 +46,7 @@ $fixation_duration = 1000;
 
 $response_duration = 1000;
 
-$yes_no_time = 500;
+$yes_no_time = 2000;
 
 
 begin;
@@ -112,13 +108,24 @@ text {
 } response_text;
 
 text {
-	width = 500;
-	height = 100;
-	caption = "yes               no";
+	width = 290;
+	height = 190;
+	caption = "Yes";
 	font_color = $font_color, $font_color, $font_color;
 	background_color = $bg_color, $bg_color, $bg_color;
 	font_size = $probe_font_size;
-} yes_no_text;
+} yes_text;
+
+text {
+	width = 290;
+	height = 190;
+	caption = "No";
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	font_size = $probe_font_size;
+} no_text;
+
+box { height = 200; width = 300; color = $font_color, $font_color, $font_color;} box1;
 
 trial { 
 
@@ -155,7 +162,13 @@ trial {
 	picture { background_color = $bg_color, $bg_color, $bg_color; text experimental_prompt; x=0; y=0; };
 	time = 0;
 	
-	picture { background_color = $bg_color, $bg_color, $bg_color; text experimental_prompt; x=0; y=0; text yes_no_text; x=0; y=-250; };
+	picture { background_color = $bg_color, $bg_color, $bg_color;
+		text experimental_prompt; x=0; y=0;
+		box box1; x=-500; y=-250;
+		box box1; x=500; y=-250;
+		text yes_text; x=-500; y=-250;
+		text no_text; x=500; y=-250;
+	};
 	delta_time = $yes_no_time;
 	
 } experimental_probe;
@@ -168,7 +181,13 @@ trial {
 	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_prompt; x=0; y=0; };
 	time = 0;
 	
-	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_prompt; x=0; y=0; text yes_no_text; x=0; y=-250; };
+	picture { background_color = $bg_color, $bg_color, $bg_color;
+		text baseline_prompt; x=0; y=0;		
+		box box1; x=-500; y=-250;
+		box box1; x=500; y=-250;
+		text yes_text; x=-500; y=-250;
+		text no_text; x=500; y=-250;
+	};
 	delta_time = $yes_no_time;
 
 } baseline_probe;
@@ -180,7 +199,13 @@ trial {
 	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_prompt; x=0; y=0; };
 	time = 0;
 	
-	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_prompt; x=0; y=0; text yes_no_text; x=0; y=-250; };
+	picture { background_color = $bg_color, $bg_color, $bg_color;
+		text filler_prompt; x=0; y=0;
+		box box1; x=-500; y=-250;
+		box box1; x=500; y=-250;
+		text yes_text; x=-500; y=-250;
+		text no_text; x=500; y=-250;
+	};
 	delta_time = $yes_no_time;
 
 } filler_probe;
@@ -210,8 +235,8 @@ trial {
 	
 	trial_duration = $fixation_duration;
 	picture { background_color = $bg_color, $bg_color, $bg_color; line_graphic { 
-		coordinates = -300, 0, 300, 0;
-		coordinates = 0, -300, 0, 300;
+		coordinates = -100, 0, 100, 0;
+		coordinates = 0, -90, 0, 90;
 		line_width = 5;
 		line_color = $font_color, $font_color, $font_color;
 	}; x=0; y=0; };
@@ -268,7 +293,7 @@ trial {
 			background_color = $bg_color, $bg_color, $bg_color;
 			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one.\n\nYou will also answer questions about some of the sentences. The questions can be answered with “YES” or “NO”.\n\nPress the LEFT button for “YES”\nPress the RIGHT button for “NO”";
 			font = "Times New Roman";
-			font_size = 30;
+			font_size = $instruction_font_size;
 		};
 		x = 0;
 		y = 0;
@@ -287,7 +312,7 @@ trial {
 			background_color = $bg_color, $bg_color, $bg_color;
 			caption = "Let’s do some practice!\n\nRemember to read each sentence chunk carefully,\nand answer the questions by pressing the LEFT button for “YES” and the RIGHT button for “NO”.";
 			font = "Times New Roman";
-			font_size = 30;
+			font_size = $instruction_font_size;
 		};
 		x = 0;
 		y = 0;
@@ -307,9 +332,25 @@ trial {
 			caption = "Great Job! Let’s begin the task.\n\nRemember to read each sentence chunk carefully,\nand answer the questions by pressing the LEFT button for “YES” and the RIGHT button for “NO”.\n\nPlease let the experimenter know if you have any questions.
 ";
 			font = "Times New Roman";
-			font_size = 30;
+			font_size = $instruction_font_size;
 		};
 		x = 0;
 		y = 0;
 	};
 } instr3;
+
+text {
+	font_color = $font_color, $font_color, $font_color;
+	background_color = $bg_color, $bg_color, $bg_color;
+	caption = "";
+	font = "Times New Roman";
+	font_size = $instruction_font_size;
+} debug_text;
+
+trial {
+	trial_duration = 3000;
+	picture { 
+		background_color = $bg_color, $bg_color, $bg_color;
+		text debug_text; x=0; y=0;
+	};
+} debug;
