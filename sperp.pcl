@@ -1,8 +1,8 @@
 array <string> practice_experimental[2][2][4] = {{{"The child", "lifted", "by the mother", "was happy"},
 												{"The bride", "lifted", "by the groom", "was beautiful"}},
 												
-												{{"The professor", "read", "the book", "that was long"},
-												{"The poem", "read", "by the students", "was famous"}}};
+												{{"The father", "tickled", "the baby", "that was cute"},
+												{"The brother", "tickled", "by the sister", "was annoyed"}}};
 
 array <string> practice_baseline[2][4] = {{"The camper", "was leaping", "into the pool"},
 														{"The grandma", "were walking", "on the path"}};
