@@ -28,15 +28,15 @@ array <string> primes_1[6][12][4] = {{{"The manager", "proposed", "the boss", "t
                                     {"The student", "discussed", "the grade", "that was unfair"},
                                     {"The woman", "watched", "the crowd", "that was large"},
                                     {"The teacher", "loved", "by the class", "was cheerful"},
-                                    {"The candidate", "considered", "the company that", "was trustworthy"},
+                                    {"The candidate", "considered", "the company", "that was trustworthy"},
                                     {"The prisoner", "transported", "by the guards", "was dangerous"},
                                     {"The trainer", "requested", "the dancer", "who was short"}},
                                     
                                     {{"The pilot", "attacked", "by the mob", "was scared"},
                                     {"The worker", "paid", "the fee", "that was expensive"},
                                     {"The client", "examined", "by the lawyer", "was guilty"},
-                                    {"The child", "chased", "the chicken that", "was escaping"},
-                                    {"The customer", "sketched", "by the waitress", "was king"},
+                                    {"The child", "chased", "the chicken", "that was escaping"},
+                                    {"The customer", "sketched", "by the waitress", "was kind"},
                                     {"The soldier", "studied", "the journalist", "who was writing an article"},
                                     {"The star", "recognized", "the fans", "who were supportive"},
                                     {"The man", "scratched", "by the cat", "was badly injured"},
@@ -51,9 +51,9 @@ array <string> primes_1[6][12][4] = {{{"The manager", "proposed", "the boss", "t
                                     {"The referee", "sent", "the report", "that was important"},
                                     {"The scientist", "considered", "by the committee", "was qualified"},
                                     {"The tutor", "requested", "the child", "that was well-behaved"},
-                                    {"The criminal", "recognized", "the officer who", "was strong"},
+                                    {"The criminal", "recognized", "the officer", "who was strong"},
                                     {"The tourist", "chased", "by the lion", "was scared"},
-                                    {"The patient", "expected", "the surgeon who", "was an expert"},
+                                    {"The patient", "expected", "the surgeon", "who was an expert"},
                                     {"The thief", "watched", "by the cop", "was sneaky"},
                                     {"The pilot", "attacked", "the mob", "that was angry"},
                                     {"The client", "discussed", "by the company", "was convincing"}},
@@ -654,6 +654,25 @@ array <int> block_indicies [6] = {1, 2, 3, 4, 5, 6};
 
 ########################################################################################################################################################################
 
+int list = int(list_wrapper.caption());
+
+array <string> primes [6][12][4];
+array <string> targets [6][12][4];
+array <int> experimental_responses [6][12];
+array <string> experimental_prompts [6][12];
+
+if (list == 1) then
+	primes = primes_1;
+	targets = targets_1;
+	experimental_responses = experimental_responses_1;
+	experimental_prompts = experimental_prompts_1;
+else
+	primes = primes_2;
+	targets = targets_2;
+	experimental_responses = experimental_responses_2;
+	experimental_prompts = experimental_prompts_2;
+end;
+
 sub string type_to_string(int aType) begin
 	if aType == stimulus_hit then
 		return "CORRECT";
@@ -754,14 +773,41 @@ sub practice begin
 		i = i + 1;
 	end;
 end;
+
+sub array <int, 1> gen_randoms begin
+	array <int> randoms[6] = {0, 0, 0, 0, 0, 0, 0};
+	bool repeat;
+	loop int i = 1 until i > 6 begin
+		repeat = true; 
+		loop until repeat == false begin
+			repeat = false;
+			randoms[i] = random(1, 12);
+			loop int j = i-1 until j < 1 begin
+				if randoms[i] == randoms[j] then
+					repeat = true;
+				end;
+				j = j - 1;
+			end; 
+		end;
+		i = i + 1; 
+	end;
+	return randoms;
+end;
 			
 ###################################################################################################################################################################
 
+array<int> filler_rands[6] = gen_randoms();
+array<int> baseline_rands[6] = gen_randoms();
+
 block_indicies.shuffle();
+baseline_indicies.shuffle();
 filler_indicies.shuffle();
 instr1.present();
 instr2.present();
 
+output_file log = new output_file;
+log.open("SPERP_log" + date_time( "yyyy.mm.dd_hh.nn.ss" )+ ".csv");
+log.print("Stimulus Type,Stimulus,Response,Reaction Time\n");
 practice();
 
 string sentence = "";
@@ -770,13 +816,13 @@ instr3.present();
 
 loop int k = 1 until k > block_indicies.count() begin
 
-	loop int i = 1 until i > primes_1[k].count() begin
+	loop int i = 1 until i > primes[k].count() begin
 	
 		#primes
 		fixation.present();
-		loop int j = 1 until j > primes_1[block_indicies[k]][i].count() begin
-			prime_text.set_caption(primes_1[block_indicies[k]][i][j]);
-			sentence.append(primes_1[block_indicies[k]][i][j]);
+		loop int j = 1 until j > primes[block_indicies[k]][i].count() begin
+			prime_text.set_caption(primes[block_indicies[k]][i][j]);
+			sentence.append(primes[block_indicies[k]][i][j]);
 			sentence.append(" ");
 			prime_text.redraw();
 			prime.present();
@@ -784,15 +830,14 @@ loop int k = 1 until k > block_indicies.count() begin
 			j = j + 1;
 		end;
 		
-		debug_text.set_caption(sentence);
-		debug_text.redraw();
-		debug.present();
+		log.print("Experimental,");
+		log.print(sentence + ",");
 		sentence = "";
 			
 		#targets
 		fixation.present();
-		loop int j = 1 until j > targets_1[block_indicies[k]][i].count() begin
-			target_text.set_caption(targets_1[block_indicies[k]][i][j]);
+		loop int j = 1 until j > targets[block_indicies[k]][i].count() begin
+			target_text.set_caption(targets[block_indicies[k]][i][j]);
 			target_text.redraw();
 			target.present();
 			sleep.present();
@@ -801,19 +846,21 @@ loop int k = 1 until k > block_indicies.count() begin
 	
 		#experimental prompts
 		prompt_sleep.present();
-		experimental_prompt.set_caption(experimental_prompts_1[block_indicies[k]][i]);
+		experimental_prompt.set_caption(experimental_prompts[block_indicies[k]][i]);
 		experimental_prompt.redraw();
-		experimental_probe.get_stimulus_event(1).set_target_button(experimental_responses_1[block_indicies[k]][i]);
+		experimental_probe.get_stimulus_event(1).set_target_button(experimental_responses[block_indicies[k]][i]);
 		experimental_probe.present();
 	
-		term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
-		term.print_line(stimulus_manager.last_stimulus_data().reaction_time_double());
-	
+		log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
+		log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
+		
 		#baselines
 		fixation.present();
 		loop int j = 1 until j > baselines[i].count() begin
 			baseline_text.set_caption(baselines[baseline_indicies[i]][j]);
 			baseline_text.redraw();
+			sentence.append(baselines[baseline_indicies[i]][j]);
+			sentence.append(" ");
 			baseline.present();
 			sleep.present();
 			j = j + 1;
@@ -821,34 +868,63 @@ loop int k = 1 until k > block_indicies.count() begin
 	
 		#baseline prompts
 		prompt_sleep.present();
-		if (random(0,3) == 0) then
+		bool baseline_show = false;
+		loop int r = 1 until r > baseline_rands.count() begin
+			if i == baseline_rands[r] then
+				baseline_show = true;
+			end;
+			r = r + 1;
+		end;
+		
+		if (baseline_show) then
 			baseline_prompt.set_caption(baseline_prompts[baseline_indicies[i]]);
 			baseline_prompt.redraw();
 			baseline_probe.get_stimulus_event(1).set_target_button(baseline_responses[baseline_indicies[i]]);
 			baseline_probe.present();
-			term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+			
+			log.print("Baseline,");
+			log.print(sentence + ",");
+			log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
+			log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 
 		end;
+		sentence = "";
 	
 		#fillers
-		fixation.present();
-		loop int j = 1 until j > fillers[filler_indicies[i]].count() begin 
-			filler_text.set_caption(fillers[filler_indicies[i]][j]);
-			filler_text.redraw();
-			filler.present();
-			sleep.present();
-			
-			j = j + 1;
-		end; 
+		bool filler_show = false;
+		loop int r = 1 until r > filler_rands.count() begin
+			if i == filler_rands[r] then
+				filler_show = true;
+			end;
+			r = r + 1;
+		end;
 		
-		#filler prompts
-		#half of trials should have fillers
-		prompt_sleep.present();
-		if (random(0, 1) == 0) then
+		if (filler_show) then
+			fixation.present();
+			loop int j = 1 until j > fillers[filler_indicies[i]].count() begin 
+				filler_text.set_caption(fillers[filler_indicies[i]][j]);
+				filler_text.redraw();
+				sentence.append(fillers[filler_indicies[i]][j]);
+				sentence.append(" ");
+				filler.present();
+				sleep.present();
+			
+				j = j + 1;
+			end; 
+			
+			log.print("Filler,");
+			log.print(sentence + ",");
+		
+			#filler prompts
+			#half of trials should have fillers
+			prompt_sleep.present();
 			filler_prompt.set_caption(filler_prompts[filler_indicies[i]]);
 			filler_prompt.redraw();
 			filler_probe.get_stimulus_event(1).set_target_button(filler_responses[filler_indicies[i]]);
 			filler_probe.present();
+			
+			log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
+			log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 			term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
 		end;
 	
