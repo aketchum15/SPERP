@@ -806,7 +806,7 @@ instr1.present();
 instr2.present();
 
 output_file log = new output_file;
-log.open("SPERP_log" + date_time( "yyyy.mm.dd_hh.nn.ss" )+ ".csv");
+log.open("logs/SPERP_log" + date_time( "yyyy.mm.dd_hh.nn.ss" )+ ".csv");
 log.print("Stimulus Type,Stimulus,Response,Reaction Time\n");
 practice();
 
