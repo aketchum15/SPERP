@@ -1111,7 +1111,7 @@ end;
 			
 ########################################################################################################################
 
-#block_indicies.shuffle();
+block_indicies.shuffle();
 instr1.present();
 instr2.present();
 
@@ -1120,7 +1120,7 @@ array <double> codes_tmp [1];
 
 
 
-#practice();
+practice();
 
 string sentence = "";
 
