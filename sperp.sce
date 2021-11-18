@@ -26,10 +26,10 @@ $bg_color = 150;
 #font color 0-255
 $font_color = 0;
 
-$prime_duration = 1000;
-$target_duration = 1000;
-$baseline_duration = 1000;
-$filler_duration = 1000;
+$prime_duration = 200;
+$target_duration = 200;
+$baseline_duration = 200;
+$filler_duration = 200;
 
 $baseline_probe_duration = 1000;
 $filler_probe_duration = 1000;
@@ -134,29 +134,46 @@ box { height = 200; width = 300; color = $font_color, $font_color, $font_color;}
 
 trial { 
 
-	trial_duration = $prime_duration;
-	picture { background_color = $bg_color, $bg_color, $bg_color; text prime_text; x=0; y=0; };
+    trial_duration = $prime_duration;
+    stimulus_event {
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text prime_text; x=0; y=0; };
+        port_code = 0;
+    };
 	
 } prime;
 
 trial {
 
 	trial_duration = $target_duration;
-	picture { background_color = $bg_color, $bg_color, $bg_color; text target_text; x=0; y=0; };
+    stimulus_event {
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text target_text; x=0; y=0; };
+        port_code = 0;
+    };
 	
 } target;
 
 trial {
 
 	trial_duration = $baseline_duration;
-	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_text; x=0; y=0; };
+    stimulus_event {
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_text; x=0; y=0; };
+        port_code = 0;
+    };
+
 	
 } baseline;
 
 trial {
 
 	trial_duration = $filler_duration;
-	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_text; x=0; y=0; };
+    stimulus_event { 
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text filler_text; x=0; y=0; };
+        port_code = 0;
+    };
 	
 } filler;
 
@@ -164,8 +181,13 @@ trial {
 	
 	trial_type = first_response;
 	trial_duration = forever;
-	picture { background_color = $bg_color, $bg_color, $bg_color; text experimental_prompt; x=0; y=0; };
-	time = 0;
+
+    stimulus_event {
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text experimental_prompt; x=0; y=0; };
+        port_code = 19;
+			time = 0;
+    };
 	
 	picture { background_color = $bg_color, $bg_color, $bg_color;
 		text experimental_prompt; x=0; y=0;
@@ -183,8 +205,13 @@ trial {
 	trial_type = first_response; 
 	trial_duration = forever;
 	
-	picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_prompt; x=0; y=0; };
-	time = 0;
+    stimulus_event {
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text baseline_prompt; x=0; y=0; };
+        port_code = 26;
+		time = 0;
+    };
+	
 	
 	picture { background_color = $bg_color, $bg_color, $bg_color;
 		text baseline_prompt; x=0; y=0;		
@@ -201,8 +228,14 @@ trial {
 
 	trial_type = first_response;
 	trial_duration = forever;
-	picture { background_color = $bg_color, $bg_color, $bg_color; text filler_prompt; x=0; y=0; };
-	time = 0;
+
+    stimulus_event {
+
+        picture { background_color = $bg_color, $bg_color, $bg_color; text filler_prompt; x=0; y=0; };
+        port_code = 33;
+		time = 0;
+    };
+	
 	
 	picture { background_color = $bg_color, $bg_color, $bg_color;
 		text filler_prompt; x=0; y=0;
