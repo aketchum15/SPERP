@@ -810,7 +810,7 @@ array <int> baseline_prompt_indicies_1 [6][12] = {{0, 1, 0, 0, 0, 0, 1, 0, 0, 1,
 array <int> baseline_prompt_indicies_2 [6][12] = {{0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
                                                 {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0},
                                                 {0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0},
-,                                               {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                                                {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
                                                 {1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0},
                                                 {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0}};
 
@@ -1149,10 +1149,7 @@ instr2.present();
 
 array <double> codes_tmp [1];
 
-
-
-
-practice();
+#practice();
 
 string sentence = "";
 
@@ -1211,7 +1208,7 @@ loop int k = 1 until k > block_indicies.count() begin
 		experimental_probe.get_stimulus_event(1).set_target_button(experimental_responses[block_indicies[k]][i]);
 		experimental_probe.present();
 	
-        log.print(stimulus_manager.last_stimulus_data().button() + ",");
+        log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
 		log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 		log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 		response_arr_t[k][i] = stimulus_manager.last_stimulus_data().type();
@@ -1241,12 +1238,11 @@ loop int k = 1 until k > block_indicies.count() begin
 			
 			log.print("Baseline,");
 			log.print(sentence + ",");
-            log.print(stimulus_manager.last_stimulus_data().button() + ",");
+         log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
 			log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 			log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 			response_arr_b[k].add(stimulus_manager.last_stimulus_data().type());
 			reaction_arr_b[k].add(stimulus_manager.last_stimulus_data().reaction_time_double());
-
 		end;
 		sentence = "";
 	
