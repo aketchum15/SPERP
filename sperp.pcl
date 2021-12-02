@@ -71,10 +71,10 @@ array <string> practice_experimental[2][2][4] = {{{"The child", "lifted", "by th
 												{"The brother", "tickled", "by the sister", "was annoyed"}}};
 
 array <string> practice_baseline[2][4] = {{"The camper", "was leaping", "into the pool"},
-														{"The grandma", "were walking", "on the path"}};
+	    									{"The grandma", "were walking", "on the path"}};
 
 array <string> practice_filler[2][4] = {{"The vet", "weighed", "the cat", "that was heavy"},
-													{"The policeman", "patted", "the dog", "that was loyal"}};
+										{"The policeman", "patted", "the dog", "that was loyal"}};
 
 array <string> practice_e_probes[2] = {"Did the bride lift the groom?", "Did the student read the poem?"};
 array <int> practice_e_responses[2] = {2, 1};
@@ -337,7 +337,20 @@ array <string> targets_1 [6][12][4] = {{{"The speaker", "proposed", "by the grou
                                     {"The student", "considered", "by the college", "was good at sports"},
                                     {"The soldier", "chased", "by the guard", "was guilty"}}};
 
-array <string> targets_2[6][12][4] = {{{"The chef", "expected", "by the couple", "was late"},
+array <string> targets_2[6][12][4] = {{{"The boy", "described by the woman", "was handsome"},
+                                    {"The king", "transported", "by the soldier", "was in disguise"},
+                                    {"The woman", "watched", "by the crowd", "was suspicious"},
+                                    {"The man", "paid", "by the roommate", "was stingy"},
+                                    {"The speaker", "proposed", "by the group", "was engaging"},
+                                    {"The boy", "attacked", "by the dog", "had major injuries"},
+                                    {"The child", "scratched", "by the dog", "was annoyed"},
+                                    {"The student", "discussed by the program", "was failing"},
+                                    {"The criminal", "recognized", "by the officer", "was dangerous"},
+                                    {"The soldier", "studied by the journalist", "was brave"},
+                                    {"The dog", "loved", "by the child", "was cute"},
+                                    {"The trainer", "wanted", "by the athlete", "was busy"}},
+
+			                	    {{"The chef", "expected", "by the couple", "was late"},
                                     {"The star", "recognized", "by the fans", "was famous"},
                                     {"The man", "scratched", "by the cat", "was badly injured"},
                                     {"The assistant", "recorded", "by the actor", "was nosy"},
@@ -361,11 +374,11 @@ array <string> targets_2[6][12][4] = {{{"The chef", "expected", "by the couple",
                                     {"The contestant", "selected", "by the bachelor", "was the best choice"},
                                     {"The customer", "sketched", "by the waitress", "was kind"},
                                     {"The athlete", "studied", "by the trainer", "was strong"},
-                                    {"The thief", "identified", "by the vitim", "was tall"}},
+                                    {"The thief", "identified", "by the victim", "was tall"}},
                                     
                                     {{"The nurse", "requested", "by the hospital", "was busy"},
                                     {"The actress", "loved", "by the fans", "was in a movie"},
-                                    {"The referee", "sent", "by the officer", "was fair"},
+                                    {"The referee", "sent", "by the office", "was fair"},
                                     {"The assistant", "selected", "by the king", "was loyal"},
                                     {"The couple", "towed", "by the driver", "was in an accident"},
                                     {"The worker", "examined", "by the boss", "was wasteful"},
@@ -399,7 +412,7 @@ array <string> targets_2[6][12][4] = {{{"The chef", "expected", "by the couple",
                                     {"The friend", "paid", "by the gardener", "was grateful"},
                                     {"The thief", "watched", "by the cop", "was sneaky"},
                                     {"The singer", "wanted", "by the company", "had a nice voice"},
-                                    {"The pilot", "attached", "by the mob", "was scared"},
+                                    {"The pilot", "attacked", "by the mob", "was scared"},
                                     {"The actor", "proposed", "by the writer", "was talented"}}};
 
 
@@ -780,19 +793,28 @@ array <int> baseline_responses [36] = {1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2,
 
 
 array <int> baseline_indicies [6][12] = {{36, 27, 70, 60, 1, 35, 26, 52, 54, 21, 46, 58},
-														{31, 17, 40, 71, 34, 65, 24, 51, 18, 44, 19, 72},
-														{37, 53, 33, 30, 32, 49, 23, 29, 63, 45, 28, 62},
-														{22, 38, 66, 8, 7, 50, 57, 56, 11, 4, 15, 67},
-														{59, 64, 20, 42, 41, 16, 3, 55, 25, 48, 14, 10},
-														{39, 6, 61, 9, 5, 68, 47, 2, 69, 43, 12, 13}};
+										{31, 17, 40, 71, 34, 65, 24, 51, 18, 44, 19, 72},
+										{37, 53, 33, 30, 32, 49, 23, 29, 63, 45, 28, 62},
+										{22, 38, 66, 8, 7, 50, 57, 56, 11, 4, 15, 67},
+										{59, 64, 20, 42, 41, 16, 3, 55, 25, 48, 14, 10},
+										{39, 6, 61, 9, 5, 68, 47, 2, 69, 43, 12, 13}};
 
 
-array <int> baseline_prompt_indicies [6][12] = {{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0},
-																{0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0},
-																{0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0},
-																{0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0},
-																{0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0},
-																{0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1}};
+array <int> baseline_prompt_indicies_1 [6][12] = {{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0},
+												{0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0},
+												{0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0},
+												{0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0},
+												{0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0},
+							    				{0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1}};
+
+array <int> baseline_prompt_indicies_2 [6][12] = {{0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+                                                {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0},
+                                                {0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0},
+,                                               {0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                                                {1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0},
+                                                {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0}};
+
+
 
 array <string> fillers [36][4] = {{"The woman", "bought", "the apple", "that was red"},
                                     {"The boy", "met", "the athlete", "who was tall"},
@@ -846,13 +868,13 @@ array <string> filler_prompts [36] = {"Did the woman buy the apple?",
                                         "Did the woman drop the box?",
                                         "Did the woman kiss the actor?",
                                         "Did the boy lose the ring?",
-                                        "Did the teacher help the girl?",
+                                        "Did the girl help the grandmother?",
                                         "Did the man chew the steak?",
                                         "Did the boy clean the room?",
                                         "Did the woman cook the meal?",
-                                        "Did the man buy the cake?",
+                                        "Did the man buy the puzzle?",
                                         "Did the girl meet the student?",
-                                        "Did the doctor call the woman?",
+                                        "Did the woman call the mailman?",
                                         "Did the boy find the hat?",
                                         "Did the girl see the cat?",
                                         "Did the man eat the pizza?",
@@ -860,7 +882,7 @@ array <string> filler_prompts [36] = {"Did the woman buy the apple?",
                                         "Did the boy like the boat?",
                                         "Did the girl fail the exam?",
                                         "Did the woman wash the clothes?",
-                                        "Did the rabbit pet the boy?",
+                                        "Did the boy pat the lizard?",
                                         "Did the man drop the vase?",
                                         "Did the girl kiss the hamster?",
                                         "Did the woman lose the wallet?",
@@ -875,34 +897,38 @@ array <int> filler_responses [36] = {1, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2, 1, 2
 
 
 array <int> filler_indicies [6][12] = {{0, 10, 29, 0, 0, 0, 0, 5, 33, 0, 27, 26},
-													{0, 0, 25, 0, 0, 20, 0, 14, 1, 0, 15, 3},
-													{31, 0, 30, 0, 0, 7, 21, 0, 9, 0, 4, 0},
-													{0, 35, 19, 0, 8, 0, 34, 0, 0, 12, 0, 2},
-													{6, 0, 13, 36, 0, 22, 0, 32, 0, 23, 0, 0},
-													{24, 0, 18, 0, 0, 17, 0, 0, 11, 16, 28, 0}};
+			     						{0, 0, 25, 0, 0, 20, 0, 14, 1, 0, 15, 3},
+										{31, 0, 30, 0, 0, 7, 21, 0, 9, 0, 4, 0},
+										{0, 35, 19, 0, 8, 0, 34, 0, 0, 12, 0, 2},
+										{6, 0, 13, 36, 0, 22, 0, 32, 0, 23, 0, 0},
+										{24, 0, 18, 0, 0, 17, 0, 0, 11, 16, 28, 0}};
 
 array <int> filler_response_indicies_1 [6][12] = {{0, 10, 29, 0, 0, 0, 0, 0, 0, 0, 27, 0},
-																	{0, 0, 25, 0, 0, 20, 0, 0, 0, 0, 15, 0},
-																	{0, 0, 0, 0, 0, 7, 21, 0, 0, 0, 3, 0},
-																	{0, 35, 19, 0, 8, 0, 0, 0, 0, 0, 0, 0},
-																	{6, 0, 0, 36, 0, 0, 0, 32, 0, 0, 0, 0},
-																	{0, 0, 18, 0, 0, 17, 0, 0, 0, 0, 28, 0}};
+												{0, 0, 25, 0, 0, 20, 0, 0, 0, 0, 15, 0},
+												{0, 0, 0, 0, 0, 7, 21, 0, 0, 0, 3, 0},
+												{0, 35, 19, 0, 8, 0, 0, 0, 0, 0, 0, 0},
+												{6, 0, 0, 36, 0, 0, 0, 32, 0, 0, 0, 0},
+												{0, 0, 18, 0, 0, 17, 0, 0, 0, 0, 28, 0}};
 
-array <int> filler_response_indicies_2 [6][12] = {{0, 0, 0, 0, 0, 0, 0, 0, 5, 33, 0, 0},
-																{26, 0, 0, 0, 0, 0, 0, 0, 14, 1, 0, 0},
-																{3, 31, 0, 30, 0, 0, 0, 0, 0, 9, 0, 0},
-																{0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 12, 0},
-																{2, 0, 0, 13, 0, 0, 22, 0, 0, 0, 23, 0},
-																{24, 0, 0, 0, 0, 0, 0, 0, 11, 16, 0, 0}};
+array <int> filler_response_indicies_2 [6][12] = {{0, 0, 0, 0, 0, 0, 0, 5, 33, 0, 0, 26},
+												{0, 0, 0, 0, 0, 0, 0, 14, 1, 0, 0, 3},
+												{31, 0, 30, 0, 0, 0, 0, 0, 9, 0, 0, 0},
+												{0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 12, 0},
+												{2, 0, 0, 13, 0, 0, 22, 0, 0, 0, 23, 0},
+												{24, 0, 0, 0, 0, 0, 0, 0, 11, 16, 0, 0}};
 
 array <int> block_indicies [6] = {1, 2, 3, 4, 5, 6};
 
 ########################################################################################################################
+########################################################################################################################
+########################################################################################################################
+########################################################################################################################
+
 int list = int(list_wrapper.caption());
 
 output_file log = new output_file;
 log.open("logs/SPERP_log" + date_time( "yyyy.mm.dd_hh.nn.ss" )+ ".csv");
-log.print("Stimulus Type,Stimulus,Response,Reaction Time\n");
+log.print("Stimulus Type,Stimulus,Response,Answer,Reaction Time\n");
 
 # Arrays to be used in rest of program, assigned to either _1 or _2 for switching list orders
 array <string> primes [6][12][4];
@@ -911,6 +937,7 @@ array <string> targets [6][12][4];
 array <int> targets_codes[6][12];
 array <string> experimental_prompts [6][12];
 array <int> experimental_responses [6][12];
+array <int> baseline_prompt_indicies [6][12];
 array <int> filler_response_indicies [6][12];
 
 array <int> response_arr_t [6][12];
@@ -927,15 +954,17 @@ if (list == 1) then
     targets_codes = targets_codes_1;
 	experimental_prompts = experimental_prompts_1;
 	experimental_responses = experimental_responses_1;
+    baseline_prompt_indicies = baseline_prompt_indicies_1;
 	filler_response_indicies = filler_response_indicies_1;
 # List 2 first
 else
 	primes = primes_2;
-   primes_codes = primes_codes_2;
+    primes_codes = primes_codes_2;
 	targets = targets_2;
-   targets_codes = targets_codes_2;
+    targets_codes = targets_codes_2;
 	experimental_prompts = experimental_prompts_2;
 	experimental_responses = experimental_responses_2;
+    baseline_prompt_indicies = baseline_prompt_indicies_2;
 	filler_response_indicies = filler_response_indicies_2;
 end;
 
@@ -1070,7 +1099,7 @@ sub block_output(int i) begin
 	
 	avg = avg/3;
 	
-	log.print("Baselines\n" + string(double(hits)/12) + "," + string(avg) + "\n");
+	log.print("Baselines\n" + string(double(hits)/3) + "," + string(avg) + "\n");
 end;
 
 sub final_output begin
@@ -1106,9 +1135,12 @@ sub final_output begin
 	
 	avg = avg/72;
 	
-	log.print("Baselines\n" + string(double(hits)/72) + "," + string(avg) + "\n");
+	log.print("Baselines\n" + string(double(hits)/18) + "," + string(avg) + "\n");
 end;
 			
+########################################################################################################################
+########################################################################################################################
+########################################################################################################################
 ########################################################################################################################
 
 block_indicies.shuffle();
@@ -1179,6 +1211,7 @@ loop int k = 1 until k > block_indicies.count() begin
 		experimental_probe.get_stimulus_event(1).set_target_button(experimental_responses[block_indicies[k]][i]);
 		experimental_probe.present();
 	
+        log.print(stimulus_manager.last_stimulus_data().button() + ",");
 		log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 		log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 		response_arr_t[k][i] = stimulus_manager.last_stimulus_data().type();
@@ -1208,6 +1241,7 @@ loop int k = 1 until k > block_indicies.count() begin
 			
 			log.print("Baseline,");
 			log.print(sentence + ",");
+            log.print(stimulus_manager.last_stimulus_data().button() + ",");
 			log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 			log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 			response_arr_b[k].add(stimulus_manager.last_stimulus_data().type());
