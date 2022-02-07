@@ -1,5 +1,3 @@
-TODO: show all sentences in presentation terminal and responses
-check baselines, looks like codes were not being sent
 ########################################################################################################################
 ########################################################################################################################
 #                                                                                                                      #
@@ -1164,9 +1162,12 @@ loop int k = 1 until k > block_indicies.count() begin
 		#primes
 		fixation.present();
 		loop int j = 1 until j > primes[block_indicies[k]][i].count() begin
+
 			prime_text.set_caption(primes[block_indicies[k]][i][j]);
+
 			sentence.append(primes[block_indicies[k]][i][j]);
 			sentence.append(" ");
+
 			prime_text.redraw();
 			if (j != 3) then
 				prime.get_stimulus_event(1).set_port_code(10+j);
@@ -1174,8 +1175,10 @@ loop int k = 1 until k > block_indicies.count() begin
 				prime.get_stimulus_event(1).set_port_code(primes_codes[block_indicies[k]][i]);
 			end;
 			prime.present();
+
 			prime.get_stimulus_event(1).get_port_codes(codes_tmp);
 			term.print_line("PRIME: " + string(codes_tmp[1]));
+
 			sleep.present();
 			j = j + 1;
 		end;
@@ -1186,9 +1189,12 @@ loop int k = 1 until k > block_indicies.count() begin
 		#targets
 		fixation.present();
 		loop int j = 1 until j > targets[block_indicies[k]][i].count() begin
+
 			target_text.set_caption(targets[block_indicies[k]][i][j]);
+
 			sentence.append(targets[block_indicies[k]][i][j]);
 			sentence.append(" ");
+
 			target_text.redraw();
 			if (j != 3) then
 				target.get_stimulus_event(1).set_port_code(j+14);
@@ -1196,8 +1202,10 @@ loop int k = 1 until k > block_indicies.count() begin
 				target.get_stimulus_event(1).set_port_code(targets_codes[block_indicies[k]][i]);
 			end;
 			target.present();
+
 			target.get_stimulus_event(1).get_port_codes(codes_tmp);
 			term.print_line("TARGET: " + string(codes_tmp[1]));
+
 			sleep.present();
 			j = j + 1;
 		end;
@@ -1217,20 +1225,29 @@ loop int k = 1 until k > block_indicies.count() begin
         log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
 		log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 		log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
+
 		response_arr_t[k][i] = stimulus_manager.last_stimulus_data().type();
 		reaction_arr_t[k][i] = stimulus_manager.last_stimulus_data().reaction_time_double();
+
+        term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
 		
 		#baselines
 		fixation.present();
         loop int j = 1 until j > baselines[baseline_indicies[block_indicies[k]][i]].count() begin
+
             baseline_text.set_caption(baselines[baseline_indicies[block_indicies[k]][i]][j]);
+
             sentence.append(baselines[baseline_indicies[block_indicies[k]][i]][j]);
             sentence.append(" ");
+
             baseline_text.redraw();
+
             baseline.get_stimulus_event(1).set_port_code(baseline_codes[baseline_indicies[block_indicies[k]][i]][j]);
             baseline.present();
+
 			baseline.get_stimulus_event(1).get_port_codes(codes_tmp);
 			term.print_line("BASELINE: " + string(codes_tmp[1]));
+
             sleep.present();
             j = j + 1;
         end;
@@ -1241,6 +1258,7 @@ loop int k = 1 until k > block_indicies.count() begin
 		prompt_sleep.present();
 		
 		if (baseline_prompt_indicies[block_indicies[k]][i] == 1) then
+
 			baseline_prompt.set_caption(baseline_prompts[baseline_indicies[block_indicies[k]][i]]);
 			baseline_prompt.redraw();
 			baseline_probe.get_stimulus_event(1).set_target_button(baseline_responses[baseline_indicies[block_indicies[k]][i]]);
@@ -1251,8 +1269,12 @@ loop int k = 1 until k > block_indicies.count() begin
             log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
 			log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 			log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
+
 			response_arr_b[k].add(stimulus_manager.last_stimulus_data().type());
 			reaction_arr_b[k].add(stimulus_manager.last_stimulus_data().reaction_time_double());
+
+            term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+
 		end;
 		sentence = "";
 	
@@ -1260,14 +1282,20 @@ loop int k = 1 until k > block_indicies.count() begin
 		if (filler_indicies[block_indicies[k]][i] != 0) then
 			fixation.present();
 			loop int j = 1 until j > fillers[filler_indicies[block_indicies[k]][i]].count() begin 
+
 				filler_text.set_caption(fillers[filler_indicies[block_indicies[k]][i]][j]);
+
                 sentence.append(fillers[filler_indicies[block_indicies[k]][i]][j]);
                 sentence.append(" ");
+
 				filler_text.redraw();
+
 				filler.get_stimulus_event(1).set_port_code(j+26);
 				filler.present();
 				filler.get_stimulus_event(1).get_port_codes(codes_tmp);
+
 				term.print_line("FILLER: " + string(codes_tmp[1]));
+
 				sleep.present();
 			
 				j = j + 1;
@@ -1286,16 +1314,13 @@ loop int k = 1 until k > block_indicies.count() begin
                 filler_probe.present();
                 
                 term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+
             end;
 		end;
 	
 		i = i + 1; 
 	end;
 	block_output(k);
-	term.print_line(response_arr_t);
-	term.print_line(reaction_arr_t);
-	term.print_line(response_arr_b);
-	term.print_line(reaction_arr_b);
 	break_trial.present();
 	
 	k = k + 1; 
