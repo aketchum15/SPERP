@@ -19,17 +19,17 @@ ENDIF;
 
 $stim_font_size = 96;
 $probe_font_size = 80;
-$instruction_font_size = 40;
+$instruction_font_size = 36;
 
 #background color 0-255, 255 for white, 0 for black
 $bg_color = 150;
 #font color 0-255
 $font_color = 0;
 
-$prime_duration = 200;
-$target_duration = 200;
-$baseline_duration = 200;
-$filler_duration = 200;
+$prime_duration = 1800;
+$target_duration = 1800;
+$baseline_duration = 1800;
+$filler_duration = 1800;
 
 $baseline_probe_duration = 1000;
 $filler_probe_duration = 1000;
@@ -38,7 +38,7 @@ $filler_probe_duration = 1000;
 $sleep_duration = 200;
 $prompt_sleep_duration = 800;
 
-$fixation_duration = 1000;
+$fixation_duration = 2000;
 
 $response_duration = 1000;
 
@@ -129,6 +129,11 @@ text {
 	background_color = $bg_color, $bg_color, $bg_color;
 	font_size = $probe_font_size;
 } no_text;
+
+wavefile { filename = "audio/Screen1.wav"; } instr_audio1;
+wavefile { filename = "audio/Screen2.wav"; } instr_audio2;
+wavefile { filename = "audio/Screen3.wav"; } instr_audio3;
+wavefile { filename = "audio/Screen4.wav"; } instr_audio4;
 
 box { height = 200; width = 300; color = $font_color, $font_color, $font_color;} box1;
 
@@ -310,7 +315,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "You're done! Thank you for participating.";
+			caption = "You're done!\nThank you for participating.";
 			font = "Times New Roman";
 			font_size = $stim_font_size;
 		};
@@ -323,13 +328,14 @@ trial {
 	trial_duration = forever;
 	trial_type = specific_response;
 	terminator_button = 3;
+    sound { wavefile instr_audio1; };
 	picture {
 		background_color = $bg_color, $bg_color, $bg_color;
 		text 
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one.\n\nYou will also answer questions about some of the sentences. The questions can be answered with “YES” or “NO”.\n\nPress the LEFT button for “YES”\nPress the RIGHT button for “NO”";
+			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one."
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
@@ -341,14 +347,15 @@ trial {
 trial {
 	trial_duration = forever;
 	trial_type = specific_response;
-	terminator_button = 3;
+	terminator_button = 3; 
+    sound { wavefile instr_audio2 };
 	picture {
 		background_color = $bg_color, $bg_color, $bg_color;
 		text 
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Let’s do some practice!\n\nRemember to read each sentence chunk carefully,\nand answer the questions by pressing the LEFT button for “YES” and the RIGHT button for “NO”.";
+			caption = "You will also answer questions about some of the sentences. Not all sentences will be followed by a question, so please read each sentence carefully.\n\nThe questions can be answered with “YES” or “NO”.\n\nPress the LEFT button for “YES”\nPress the RIGHT button for “NO”\n\nTo help you remember which button to press, there will be "YES" and "NO" labels at the bottom of the screen.";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
@@ -361,14 +368,14 @@ trial {
 	trial_duration = forever;
 	trial_type = specific_response;
 	terminator_button = 3;
+    sound { wavefile instr_audio3 };
 	picture {
 		background_color = $bg_color, $bg_color, $bg_color;
 		text 
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Great Job! Let’s begin the task.\n\nRemember to read each sentence chunk carefully,\nand answer the questions by pressing the LEFT button for “YES” and the RIGHT button for “NO”.\n\nPlease let the experimenter know if you have any questions.
-";
+			caption = "Let’s do some practice!\n\nRemember to read each sentence chunk carefully.\n\nWhen you see a question answer by pressing the LEFT button for "YES" and the RIGHT button for "NO".";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
@@ -376,6 +383,26 @@ trial {
 		y = 0;
 	};
 } instr3;
+
+trial {
+	trial_duration = forever;
+	trial_type = specific_response;
+	terminator_button = 3;
+    sound { wavefile instr_audio4; };
+	picture {
+		background_color = $bg_color, $bg_color, $bg_color;
+		text 
+		{
+			font_color = $font_color, $font_color, $font_color;
+			background_color = $bg_color, $bg_color, $bg_color;
+			caption = "Great Job! Let’s begin the task.\n\nPlease let the experimenter know if you have any questions.";
+			font = "Times New Roman";
+			font_size = $instruction_font_size;
+		};
+		x = 0;
+		y = 0;
+	};
+} instr4;
 
 text {
 	font_color = $font_color, $font_color, $font_color;
