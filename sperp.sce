@@ -348,7 +348,7 @@ trial {
 	trial_duration = forever;
 	trial_type = specific_response;
 	terminator_button = 3; 
-    sound { wavefile instr_audio2 };
+    sound { wavefile instr_audio2; };
 	picture {
 		background_color = $bg_color, $bg_color, $bg_color;
 		text 
@@ -368,7 +368,7 @@ trial {
 	trial_duration = forever;
 	trial_type = specific_response;
 	terminator_button = 3;
-    sound { wavefile instr_audio3 };
+    sound { wavefile instr_audio3; };
 	picture {
 		background_color = $bg_color, $bg_color, $bg_color;
 		text 
