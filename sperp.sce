@@ -335,7 +335,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one."
+			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one.";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
