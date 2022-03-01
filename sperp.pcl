@@ -829,7 +829,7 @@ array <string> fillers [36][4] = {{"The woman", "bought", "the apple", "that was
                                     {"The girl", "pet", "the cat", "that was soft."},
                                     {"The woman", "dropped", "the box", "that was heavy."},
                                     {"The woman", "kissed", "the singer", "that was handsome."},
-                                    {"The boy", "lost", "the ring", "that was expensiv.e"},
+                                    {"The boy", "lost", "the ring", "that was expensive."},
                                     {"The girl", "helped", "the teacher", "who was cold."},
                                     {"The man", "chewed",  "the steak", "that was tough."},
                                     {"The boy", "cleaned", "the room", "that was messy."},
