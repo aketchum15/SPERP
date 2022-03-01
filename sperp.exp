@@ -1,5 +1,5 @@
-<ver>22</ver>
-<efn>C:\Users\adamk\Documents\Experiments\sperp\sperp.exp</efn>
+<ver>20.2</ver>
+<efn>C:\Users\kaganovich_lab\Documents\sperp\sperp.exp</efn>
 <author>Adam Ketchum</author>
 <con>
 <pause>P</pause>
@@ -20,33 +20,32 @@
 </con>
 <dbi></dbi>
 <dbs>button</dbs>
-<ddi>0</ddi>
+<ddi>1</ddi>
 <dds>
 <icm_profile></icm_profile>
-<orient>0</orient>
 <use_icm>0</use_icm>
 </dds>
-<ddv>Primary Display Driver</ddv>
+<ddv>AMD Radeon RX 550</ddv>
 <depchg>1</depchg>
 <discard_windows_messages>0</discard_windows_messages>
 <display_status_window>1</display_status_window>
-<dmd>0</dmd>
-<dmh>0</dmh>
-<dmr>1</dmr>
-<dmrf>1</dmrf>
-<dmw>0</dmw>
+<dmd>32</dmd>
+<dmh>1200</dmh>
+<dmr>100</dmr>
+<dmrf>100</dmrf>
+<dmw>1920</dmw>
 <docs>
 <args></args>
 <exfl></exfl>
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>C:\Users\adamk\Documents\Experiments\viss att</dsd>
-<dwm>0</dwm>
+<dsd>C:\Users\kaganovich_lab\Documents\sperp</dsd>
 <dxv>8</dxv>
 <efs>
-<filename>C:\Users\adamk\Documents\Experiments\sperp\sperp.sce</filename>
-<filename>C:\Users\adamk\Documents\Experiments\sperp\sperp.pcl</filename>
+<filename>C:\Users\kaganovich_lab\Documents\sperp\sperp.sce</filename>
+<filename>C:\Users\kaganovich_lab\Documents\sperp\sperp.pcl</filename>
+<filename>C:\Users\kaganovich_lab\Documents\sperp\sperp.exp</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version></exp_version>
@@ -120,8 +119,21 @@
 <idc>0</idc>
 <idt>0</idt>
 <ilc>0</ilc>
-<ip_chans></ip_chans>
-<lfd>C:\Users\adamk\Documents\Experiments\sperp</lfd>
+<ip_chans>
+<chan>
+<ivm></ivm>
+<mask></mask>
+<mode>0</mode>
+<name>Response Box</name>
+<piai>COM10</piai>
+<pian>Serial Port</pian>
+<pihpn>COM10</pihpn>
+<pin>1</pin>
+<pindex>3</pindex>
+<sc>0</sc>
+</chan>
+</ip_chans>
+<lfd>C:\Users\kaganovich_lab\Documents\sperp</lfd>
 <lnb>2</lnb>
 <lno>4</lno>
 <log>
@@ -164,10 +176,10 @@
 <il>0</il>
 <ivm>0</ivm>
 <mtype>dig</mtype>
-<piai>LPT1</piai>
+<piai>LPT3</piai>
 <pian>Parallel Port</pian>
-<pihpn>LPT1</pihpn>
-<pindex>0</pindex>
+<pihpn>LPT3</pihpn>
+<pindex>4</pindex>
 <rs>1</rs>
 <rt>0</rt>
 </p>
@@ -175,7 +187,76 @@
 <out_encrypt_key></out_encrypt_key>
 <pi_list></pi_list>
 <plat>1</plat>
-<port_devices></port_devices>
+<port_devices>
+<device>
+<parameters>
+<cts>0</cts>
+<dsrin>0</dsrin>
+<dsrout>0</dsrout>
+<dtr>enable</dtr>
+<rts>enable</rts>
+<set_fifo>1</set_fifo>
+<spd>8</spd>
+<spp>none</spp>
+<spr>19200</spr>
+<sps>1</sps>
+</parameters>
+<piai>COM1</piai>
+<pian>Serial Port</pian>
+<pihpn>COM1</pihpn>
+</device>
+<device>
+<parameters>
+<cts>0</cts>
+<dsrin>0</dsrin>
+<dsrout>0</dsrout>
+<dtr>enable</dtr>
+<rts>enable</rts>
+<set_fifo>1</set_fifo>
+<spd>8</spd>
+<spp>none</spp>
+<spr>19200</spr>
+<sps>1</sps>
+</parameters>
+<piai>COM3</piai>
+<pian>Serial Port</pian>
+<pihpn>COM3</pihpn>
+</device>
+<device>
+<parameters>
+<cts>0</cts>
+<dsrin>0</dsrin>
+<dsrout>0</dsrout>
+<dtr>enable</dtr>
+<rts>enable</rts>
+<set_fifo>1</set_fifo>
+<spd>8</spd>
+<spp>none</spp>
+<spr>19200</spr>
+<sps>1</sps>
+</parameters>
+<piai>COM4</piai>
+<pian>Serial Port</pian>
+<pihpn>COM4</pihpn>
+</device>
+<device>
+<parameters>
+<cts>0</cts>
+<dsrin>0</dsrin>
+<dsrout>0</dsrout>
+<dtr>enable</dtr>
+<rts>enable</rts>
+<set_fifo>1</set_fifo>
+<spd>8</spd>
+<spp>none</spp>
+<spr>19200</spr>
+<sps>1</sps>
+</parameters>
+<piai>COM10</piai>
+<pian>Serial Port</pian>
+<pihpn>COM10</pihpn>
+</device>
+</port_devices>
 <rdl>
 <device>
 <abs_axis>
@@ -227,7 +308,7 @@
 <device>
 <device_type>3</device_type>
 <dx_device_type>0</dx_device_type>
-<name>Standard PS/2 Keyboard</name>
+<name>HID Keyboard Device</name>
 </device>
 <device>
 <abs_axis>
@@ -269,12 +350,59 @@
 <dx_device_type>0</dx_device_type>
 <max_raw_pos>65535</max_raw_pos>
 <min_raw_pos>0</min_raw_pos>
-<name>Synaptics PrecisionTouchpad Filter Driver</name>
+<name>HID-compliant mouse</name>
+</device>
+<device>
+<abs_axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<saturation>1</saturation>
+</abs_axis>
+<abs_axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<saturation>1</saturation>
+</abs_axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<axis>
+<max>1000</max>
+<min>-1000</min>
+<name>Wheel</name>
+<restricted>1</restricted>
+<scale>1</scale>
+</axis>
+<device_type>2</device_type>
+<dx_device_type>0</dx_device_type>
+<max_raw_pos>65535</max_raw_pos>
+<min_raw_pos>0</min_raw_pos>
+<name>HID-compliant mouse 1</name>
 </device>
 <device>
 <device_type>4</device_type>
 <dx_device_type>17</dx_device_type>
-<name>HP Wireless Button Driver</name>
+<name>Dell KB216 Wired Keyboard</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Dell KB216 Wired Keyboard 1</name>
 </device>
 <device>
 <axis>
@@ -308,10 +436,8 @@
 <engine_class></engine_class>
 <lang></lang>
 <mc>0</mc>
-<prerecord>0</prerecord>
 <rw>0</rw>
 <sil>200</sil>
-<srgs></srgs>
 <uwd>0</uwd>
 <vocab></vocab>
 </speech>
@@ -580,6 +706,15 @@
 <upc>0</upc>
 <uvt>1</uvt>
 </device>
+<device>
+<cn>Response Box</cn>
+<device_type>11</device_type>
+<dif></dif>
+<dtf>0</dtf>
+<dx_device_type>0</dx_device_type>
+<name>Response Box</name>
+<rr></rr>
+</device>
 </rdl>
 <refchg>1</refchg>
 <rep>1</rep>
@@ -610,38 +745,39 @@
 </sce>
 <sce>
 <idv>
-<device_type>3</device_type>
-<dx_device_type>19</dx_device_type>
-<ibn>1</ibn>
-<ibn>2</ibn>
-<ibn>Enter</ibn>
-<idn>Keyboard</idn>
+<device_type>11</device_type>
+<dx_device_type>0</dx_device_type>
+<ibn>51   ('3')</ibn>
+<ibn>53   ('5')</ibn>
+<idn>Response Box</idn>
 <index>0</index>
 <index>1</index>
+<label></label>
+<label></label>
+<offset>51</offset>
+<offset>53</offset>
+</idv>
+<idv>
+<device_type>3</device_type>
+<dx_device_type>19</dx_device_type>
+<ibn>Enter</ibn>
+<idn>Keyboard</idn>
 <index>2</index>
 <label></label>
-<label></label>
-<label></label>
-<offset>2</offset>
-<offset>3</offset>
 <offset>28</offset>
 </idv>
 <overrides></overrides>
-<sfn>C:\Users\adamk\Documents\Experiments\sperp\sperp.sce</sfn>
+<sfn>C:\Users\kaganovich_lab\Documents\sperp\sperp.sce</sfn>
 </sce>
 <sct>
 <capture_device>
 <abort_on_max_drops>0</abort_on_max_drops>
 <bps></bps>
 <chan></chan>
-<closest_match>0</closest_match>
-<closest_match_max></closest_match_max>
-<closest_match_min>1, 16, 8000</closest_match_min>
 <do_rec_vol>0</do_rec_vol>
 <freq></freq>
 <ignore_drops>1</ignore_drops>
 <max_drops>250</max_drops>
-<max_rec_dur>60</max_rec_dur>
 <name>None</name>
 <rec_vol>1</rec_vol>
 <show_drops>1</show_drops>
@@ -650,6 +786,7 @@
 <combine>0</combine>
 <ignore>1000</ignore>
 <isr>0</isr>
+<max_rec_dur>10</max_rec_dur>
 <md></md>
 <mio></mio>
 <off_inter>200</off_inter>
@@ -663,7 +800,7 @@
 <sde>
 <buffer_length>1000</buffer_length>
 <custom_buf>sec_sw</custom_buf>
-<default>1</default>
+<default>0</default>
 <dup_channels>1</dup_channels>
 <ex_period>10</ex_period>
 <halt_on_underrun>1</halt_on_underrun>
@@ -675,7 +812,7 @@
 <side_speakers>1</side_speakers>
 <use_rewind_distance>0</use_rewind_distance>
 </sde>
-<sdv>Primary Sound Driver</sdv>
+<sdv>Speakers/Headphones (Realtek(R) Audio)</sdv>
 <show_dis>0</show_dis>
 <show_parm>0</show_parm>
 <show_term>1</show_term>
