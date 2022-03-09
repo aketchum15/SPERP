@@ -19,10 +19,10 @@ ENDIF;
 
 $stim_font_size = 96;
 $probe_font_size = 80;
-$instruction_font_size = 36;
+$instruction_font_size = 40;
 
 #background color 0-255, 255 for white, 0 for black
-$bg_color = 150;
+$bg_color = 110; #was 150
 #font color 0-255
 $font_color = 0;
 
@@ -44,7 +44,7 @@ $response_duration = 1000;
 
 $yes_no_time = 2000;
 
-$list = 1;
+$list = 2;
 
 
 #########################################################################################################################################################
@@ -335,7 +335,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one.";
+			caption = "Welcome! In this study, we will measure your brain waves as \n you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each \n chunk to yourself as they appear on the screen one-by-one.";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
@@ -355,7 +355,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "You will also answer questions about some of the sentences. Not all sentences will be followed by a question, so please read each sentence carefully.\n\nThe questions can be answered with “YES” or “NO”.\n\nPress the LEFT button for “YES”\nPress the RIGHT button for “NO”\n\nTo help you remember which button to press, there will be “YES” and “NO” labels at the bottom of the screen.";
+			caption = "You will also answer questions about some of the sentences. \n Not all sentences will be followed by a question, so please read each sentence carefully.\n\nThe questions can be answered with “YES” or “NO”.\n\nPress the LEFT button for “YES”\nPress the RIGHT button for “NO”\n\nTo help you remember which button to press, there will be\n “YES” and “NO” labels at the bottom of the screen.";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
@@ -375,7 +375,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Let’s do some practice!\n\nRemember to read each sentence chunk carefully.\n\nWhen you see a question answer by pressing the LEFT button for “YES” and the RIGHT button for “NO”.";
+			caption = "Let’s do some practice!\n\nRemember to read each sentence chunk carefully.\n\nWhen you see a question, answer by pressing \n the LEFT button for “YES” and the RIGHT button for “NO”.";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
