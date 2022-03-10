@@ -19,10 +19,10 @@ ENDIF;
 
 $stim_font_size = 96;
 $probe_font_size = 80;
-$instruction_font_size = 36;
+$instruction_font_size = 40;
 
 #background color 0-255, 255 for white, 0 for black
-$bg_color = 150;
+$bg_color = 110; #was 150
 #font color 0-255
 $font_color = 0;
 
@@ -44,7 +44,7 @@ $response_duration = 1000;
 
 $yes_no_time = 2000;
 
-$list = 1;
+$list = 2;
 
 
 #########################################################################################################################################################
@@ -335,7 +335,7 @@ trial {
 		{
 			font_color = $font_color, $font_color, $font_color;
 			background_color = $bg_color, $bg_color, $bg_color;
-			caption = "Welcome! In this study, we will measure your brain waves as you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each chunk to yourself as they appear on the screen one-by-one.";
+			caption = "Welcome! In this study, we will measure your brain waves as \n you read different types of sentences.\n\nEach sentence is split into smaller chunks. You will read each \n chunk to yourself as they appear on the screen one-by-one.";
 			font = "Times New Roman";
 			font_size = $instruction_font_size;
 		};
