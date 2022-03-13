@@ -196,10 +196,10 @@ trial {
 	
 	picture { background_color = $bg_color, $bg_color, $bg_color;
 		text experimental_prompt; x=0; y=0;
-		box box1; x=-500; y=-250;
-		box box1; x=500; y=-250;
-		text yes_text; x=-500; y=-250;
-		text no_text; x=500; y=-250;
+		box box1; x=-250; y=-250;
+		box box1; x=250; y=-250;
+		text yes_text; x=-250; y=-250;
+		text no_text; x=250; y=-250;
 	};
 	delta_time = $yes_no_time;
 	
@@ -220,10 +220,10 @@ trial {
 	
 	picture { background_color = $bg_color, $bg_color, $bg_color;
 		text baseline_prompt; x=0; y=0;		
-		box box1; x=-500; y=-250;
-		box box1; x=500; y=-250;
-		text yes_text; x=-500; y=-250;
-		text no_text; x=500; y=-250;
+		box box1; x=-250; y=-250;
+		box box1; x=250; y=-250;
+		text yes_text; x=-250; y=-250;
+		text no_text; x=250; y=-250;
 	};
 	delta_time = $yes_no_time;
 
@@ -244,10 +244,10 @@ trial {
 	
 	picture { background_color = $bg_color, $bg_color, $bg_color;
 		text filler_prompt; x=0; y=0;
-		box box1; x=-500; y=-250;
-		box box1; x=500; y=-250;
-		text yes_text; x=-500; y=-250;
-		text no_text; x=500; y=-250;
+		box box1; x=-250; y=-250;
+		box box1; x=250; y=-250;
+		text yes_text; x=-250; y=-250;
+		text no_text; x=250; y=-250;
 	};
 	delta_time = $yes_no_time;
 
