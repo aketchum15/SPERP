@@ -603,7 +603,7 @@ array <int> experimental_responses_2[6][12] = {{2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1,
                                                 {2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2}};
 
 
-array <string> baselines [72][3] = {{"The puppy", "was barking", "in the garden."},
+array <string> baselines [36][3] = {{"The puppy", "was barking", "in the garden."},
 												{"The hiker", "was camping", "on the mountain."},
 												{"The intern", "was coughing", "in the office."},
 												{"The baby", "was crawling", "on the floor."},
@@ -638,118 +638,10 @@ array <string> baselines [72][3] = {{"The puppy", "was barking", "in the garden.
 												{"The doctors", "were speaking", "in the hallway."},
 												{"The husbands", "were standing", "in the courtyard."},
 												{"The lifeguards", "were swimming", "in the ocean."},
-												{"The daughters", "were talking", "on the terrace."},
-												{"The puppies", "was barking", "in the garden."},
-												{"The hikers", "was camping", "on the mountain."},
-												{"The interns", "was coughing", "in the office."},
-												{"The babies", "was crawling", "on the floor."},
-												{"The cousins", "was crying", "at the funeral."},
-												{"The ladies", "was dancing", "in the studio."},
-												{"The trainees", "was dreaming", "in the shop."},
-												{"The swimmers", "was diving", "in the pool."},
-												{"The brothers", "was fencing", "in the tournament."},
-												{"The lawyers", "was frowning", "in the courthouse."},
-												{"The colleagues", "was gesturing", "in the meeting."},
-												{"The felons", "was grimacing", "in the prison."},
-												{"The sisters", "was grinning", "at the party."},
-												{"The werewolves", "was howling", "in the forest."},
-												{"The grandpas", "was jogging", "at the lake."},
-												{"The toddlers", "was jumping", "at the park."},
-												{"The deacons", "was kneeling", "at the church."},
-												{"The dancers", "was laughing", "at the tryout."},
-												{"The stranger", "were resting", "on the bench."},
-												{"The boss", "were retiring", "from the company."},
-												{"The winner", "were running", "on the track."},
-												{"The nanny", "were shivering", "in the park."},
-												{"The mother", "were showering", "in the bathroom."},
-												{"The father", "were shouting", "at the game."},
-												{"The actor", "were singing", "in the theater."},
-												{"The player", "were sitting", "on the pavement."},
-												{"The victor", "were skating", "in the arena."},
-												{"The family", "were skiing", "at the resort."},
-												{"The painter", "were sleeping", "on the porch."},
-												{"The waiter", "were smiling", "in the kitchen."},
-												{"The worker", "were sneezing", "in the office."},
-												{"The neighbor", "were snoring", "in the hotel."},
-												{"The doctor", "were speaking", "in the hallway."},
-												{"The husband", "were standing", "in the courtyard."},
-												{"The lifeguard", "were swimming", "in the ocean."},
-												{"The daughter", "were talking", "on the terrace."}};
+												{"The daughters", "were talking", "on the terrace."}};
 
 
-array <int> baseline_codes [72][3] = {{20, 21, 22}, 
-                                    {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-                                        {20, 21, 22},
-
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25},
-                                        {23, 24, 25}};
+array <int> baseline_codes [3] = {20, 21, 22};
 
 array <string> baseline_prompts [36] = {"Did the puppy bark in the garden?",
                                         "Did the hiker camp in the woods?",
@@ -792,12 +684,12 @@ array <int> baseline_responses [36] = {1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2,
                                         2, 2, 2, 1, 2, 1, 2, 1, 2};
 
 
-array <int> baseline_indicies [6][12] = {{36, 27, 70, 60, 1, 35, 26, 52, 54, 21, 46, 58},
-										{31, 17, 40, 71, 34, 65, 24, 51, 18, 44, 19, 72},
-										{37, 53, 33, 30, 32, 49, 23, 29, 63, 45, 28, 62},
-										{22, 38, 66, 8, 7, 50, 57, 56, 11, 4, 15, 67},
-										{59, 64, 20, 42, 41, 16, 3, 55, 25, 48, 14, 10},
-										{39, 6, 61, 9, 5, 68, 47, 2, 69, 43, 12, 13}};
+array <int> baseline_indicies [6][12] = {{36, 27, 34, 24, 1, 35, 26, 16, 18, 21, 10, 22},
+										{31, 17, 4, 35, 34, 29, 24, 15, 18, 8, 19, 36},
+										{1, 17, 33, 30, 32, 13, 23, 29, 27, 9, 28, 26},
+										{22, 2, 30, 8, 7, 14, 21, 20, 11, 4, 15, 31},
+										{23, 28, 20, 6, 5, 16, 3, 19, 25, 12, 14, 10},
+										{3, 6, 25, 9, 5, 32, 11, 2, 33, 7, 12, 13}};
 
 
 array <int> baseline_prompt_indicies_1 [6][12] = {{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0},
@@ -1235,24 +1127,24 @@ loop int k = 1 until k > block_indicies.count() begin
 		
 		#baselines
 		fixation.present();
-			loop int j = 1 until j > baselines[baseline_indicies[block_indicies[k]][i]].count() begin
+		loop int j = 1 until j > baselines[baseline_indicies[block_indicies[k]][i]].count() begin
 
-         baseline_text.set_caption(baselines[baseline_indicies[block_indicies[k]][i]][j]);
+             baseline_text.set_caption(baselines[baseline_indicies[block_indicies[k]][i]][j]);
 
-         sentence.append(baselines[baseline_indicies[block_indicies[k]][i]][j]);
-         sentence.append(" ");
+             sentence.append(baselines[baseline_indicies[block_indicies[k]][i]][j]);
+             sentence.append(" ");
 
-         baseline_text.redraw();
+             baseline_text.redraw();
 
-         baseline.get_stimulus_event(1).set_port_code(baseline_codes[baseline_indicies[block_indicies[k]][i]][j]);
-         baseline.present();
+             baseline.get_stimulus_event(1).set_port_code(baseline_codes[j]);
+             baseline.present();
 
-			baseline.get_stimulus_event(1).get_port_codes(codes_tmp);
-			term.print_line("BASELINE: " + string(codes_tmp[1]));
+	        baseline.get_stimulus_event(1).get_port_codes(codes_tmp);
+		    term.print_line("BASELINE: " + string(codes_tmp[1]));
 
-         sleep.present();
-         j = j + 1;
-      end;
+             sleep.present();
+             j = j + 1;
+        end;
 
       term.print_line("BASELINE: " + sentence);
 	
