@@ -71,7 +71,7 @@ array <string> practice_experimental[2][2][4] = {{{"The child", "lifted", "by th
 												{"The brother", "tickled", "by the sister", "was annoyed."}}};
 
 array <string> practice_baseline[2][4] = {{"The camper", "was leaping", "into the pool."},
-	    									{"The grandma", "were walking", "on the path."}};
+	    								  {"The grandma", "were walking", "on the path."}};
 
 array <string> practice_filler[2][4] = {{"The vet", "weighed", "the cat", "that was heavy."},
 										{"The policeman", "patted", "the dog", "that was loyal."}};
@@ -684,12 +684,12 @@ array <int> baseline_responses [36] = {1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2,
                                         2, 2, 2, 1, 2, 1, 2, 1, 2};
 
 
-array <int> baseline_indicies [6][12] = {{36, 27, 34, 24, 1, 35, 26, 16, 18, 21, 10, 22},
-										{31, 17, 4, 35, 34, 29, 24, 15, 18, 8, 19, 36},
-										{1, 17, 33, 30, 32, 13, 23, 29, 27, 9, 28, 26},
-										{22, 2, 30, 8, 7, 14, 21, 20, 11, 4, 15, 31},
-										{23, 28, 20, 6, 5, 16, 3, 19, 25, 12, 14, 10},
-										{3, 6, 25, 9, 5, 32, 11, 2, 33, 7, 12, 13}};
+array <int> baseline_indicies [6][12] = {{36, 27, 0, 0, 1, 35, 26, 0, 0, 21, 0, 0},
+										{31, 17, 0, 0, 34, 0, 24, 0, 18, 0, 19, 0},
+										{0, 0, 33, 30, 32, 0, 23, 29, 0, 0, 28, 0},
+										{22, 0, 0, 8, 7, 0, 0, 0, 11, 4, 15, 0},
+										{0, 0, 20, 0, 0, 16, 3, 0, 25, 0, 14, 10},
+										{0, 6, 0, 9, 5, 0, 0, 2, 0, 0, 12, 13}};
 
 
 array <int> baseline_prompt_indicies_1 [6][12] = {{0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0},
@@ -1104,7 +1104,7 @@ loop int k = 1 until k > block_indicies.count() begin
 			j = j + 1;
 		end;
 		
-      term.print_line("TARGET: " + sentence);
+		term.print_line("TARGET: " + sentence);
 		log.print("Target,");
 		log.print(sentence + ",");
 		sentence = "";
@@ -1116,37 +1116,40 @@ loop int k = 1 until k > block_indicies.count() begin
 		experimental_probe.get_stimulus_event(1).set_target_button(experimental_responses[block_indicies[k]][i]);
 		experimental_probe.present();
 	
-      log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
+		log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
 		log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 		log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 
 		response_arr_t[k][i] = stimulus_manager.last_stimulus_data().type();
 		reaction_arr_t[k][i] = stimulus_manager.last_stimulus_data().reaction_time_double();
 
-      term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+		term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
 		
 		#baselines
 		fixation.present();
-		loop int j = 1 until j > baselines[baseline_indicies[block_indicies[k]][i]].count() begin
+		if ( baseline_indicies[block_indicies[k]][i] != 0) then
+			
+			loop int j = 1 until j > baselines[baseline_indicies[block_indicies[k]][i]].count() begin
 
-             baseline_text.set_caption(baselines[baseline_indicies[block_indicies[k]][i]][j]);
+				baseline_text.set_caption(baselines[baseline_indicies[block_indicies[k]][i]][j]);
 
-             sentence.append(baselines[baseline_indicies[block_indicies[k]][i]][j]);
-             sentence.append(" ");
+				sentence.append(baselines[baseline_indicies[block_indicies[k]][i]][j]);
+				sentence.append(" ");
 
-             baseline_text.redraw();
+				baseline_text.redraw();
 
-             baseline.get_stimulus_event(1).set_port_code(baseline_codes[j]);
-             baseline.present();
+				baseline.get_stimulus_event(1).set_port_code(baseline_codes[j]);
+				baseline.present();
 
-	        baseline.get_stimulus_event(1).get_port_codes(codes_tmp);
-		    term.print_line("BASELINE: " + string(codes_tmp[1]));
+				baseline.get_stimulus_event(1).get_port_codes(codes_tmp);
+				term.print_line("BASELINE: " + string(codes_tmp[1]));
 
-             sleep.present();
-             j = j + 1;
-        end;
+				sleep.present();
+				j = j + 1;
+			end;
+		end;
 
-      term.print_line("BASELINE: " + sentence);
+		term.print_line("BASELINE: " + sentence);
 	
 		#baseline prompts
 		prompt_sleep.present();
@@ -1160,14 +1163,14 @@ loop int k = 1 until k > block_indicies.count() begin
 			
 			log.print("Baseline,");
 			log.print(sentence + ",");
-         log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
+			log.print(string(stimulus_manager.last_stimulus_data().button()) + ",");
 			log.print(type_to_string(stimulus_manager.last_stimulus_data().type()) + ",");
 			log.print(string(stimulus_manager.last_stimulus_data().reaction_time_double()) + "\n");
 
 			response_arr_b[k].add(stimulus_manager.last_stimulus_data().type());
 			reaction_arr_b[k].add(stimulus_manager.last_stimulus_data().reaction_time_double());
 
-         term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
+			term.print_line(type_to_string(stimulus_manager.last_stimulus_data().type()));
 
 		end;
 		sentence = "";
@@ -1179,8 +1182,8 @@ loop int k = 1 until k > block_indicies.count() begin
 
 				filler_text.set_caption(fillers[filler_indicies[block_indicies[k]][i]][j]);
 
-            sentence.append(fillers[filler_indicies[block_indicies[k]][i]][j]);
-            sentence.append(" ");
+				sentence.append(fillers[filler_indicies[block_indicies[k]][i]][j]);
+				sentence.append(" ");
 
 				filler_text.redraw();
 
